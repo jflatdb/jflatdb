@@ -43,3 +43,28 @@
 
 ## 📂 Folder Structure
 
+
+---
+
+## 🚀 Installation
+
+### 📦 From PyPI (Coming soon)
+```bash
+pip install jflatdb
+```
+
+### 🤝 Contributing
+-  Fork this repository
+- Create your feature branch (git checkout -b feature/my-feature).
+- Commit your changes (git commit -am 'Add new feature')
+-  Push to the branch (git push origin feature/my-feature)
+-  Open a pull request 🚀
+
+
+
+## 📄 License
+- Licensed under the MIT License.
+
+## 👨‍💻 Author
+- Made with ❤️ by Akki Production
+- ```🔗 GitHub: github.com/jflatdb```
