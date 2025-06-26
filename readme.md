@@ -12,9 +12,6 @@
   <a href="https://github.com/jflatdb/jflatdb">
     <img src="https://img.shields.io/github/v/release/jflatdb/jflatdb" alt="Latest Release">
   </a>
-  <a href="https://www.python.org/">
-    <img src="https://img.shields.io/badge/python-3.7%2B-blue.svg" alt="Python Version">
-  </a>
   <a href="LICENSE">
     <img src="https://img.shields.io/github/license/jflatdb/jflatdb.svg" alt="License">
   </a>
@@ -42,7 +39,13 @@
 ---
 
 ## 📂 Folder Structure
-
+jflatdb/ <br>
+├── assets/            # Logo / Images <br>
+├── jflatdb/          # Main database engine <br>
+├── tests/            # Test cases (optional) <br>
+├── examples/         # Examples <br>
+├── README.md         # Project documentation <br>
+├── LICENSE
 
 ---
 
