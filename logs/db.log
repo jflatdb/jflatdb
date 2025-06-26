@@ -1,0 +1,9 @@
+[2025-06-25 18:26:05] [INFO] Database initialized
+[2025-06-26 09:35:58] [INFO] Database initialized
+[2025-06-26 09:42:19] [INFO] Database initialized
+[2025-06-26 09:43:15] [INFO] Database initialized
+[2025-06-26 09:43:15] [INFO] Inserted record: {'id': 1, 'name': 'Alice'}
+[2025-06-26 09:45:09] [INFO] Database initialized
+[2025-06-26 09:45:09] [INFO] Inserted record: {'id': 1, 'name': 'Alice'}
+[2025-06-26 09:45:22] [INFO] Database initialized
+[2025-06-26 09:45:22] [INFO] Inserted record: {'id': 1, 'name': 'Alice'}
