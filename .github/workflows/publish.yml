@@ -1,6 +1,7 @@
 name: Publish Python Package to PyPI
 
 on:
+  workflow_dispatch:  # ✅ Manual run
   push:
     tags:
       - 'v*'  # Only run when you push version tags like v0.1.0
