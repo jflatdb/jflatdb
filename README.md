@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/jflatdb/jflatdb/raw/main/assets/logo.png" width="200" alt="JFlatDB Logo" />
+  <img src="https://github.com/jflatdb/jflatdb/raw/main/assets/logo/logo.png" width="200" alt="JFlatDB Logo" />
 </p>
 
 <h1 align="center">JFlatDB</h1>
