@@ -40,3 +40,5 @@
 - ⚡ Written in pure Python — no dependencies
 
 ---
+
+> If you find this project helpful, please ⭐ star it and share it!
