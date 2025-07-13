@@ -95,11 +95,11 @@ Please read our CONTRIBUTING.md for full guidelines.
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## 💬 Join the Community
-- [Submit an Issue](https://github.com/issues/)
+- [Submit an Issue](https://github.com/jflatdb/jflatdb/issues)
 
-- [Start a Discussion](https://github.com/discussion/)
+- [Start a Discussion](https://github.com/jflatdb/jflatdb/discussion/)
 
-- [Suggest a Feature](https://github.com/.github/)
+- [Suggest a Feature](https://github.com/jflatdb/jflatdb.github/)
 
 ---
 ## 🙌 Credits
