@@ -107,19 +107,6 @@ Developed and maintained by ```Akki```.
 
 ---
 
-### ✅ Next Steps
-
-Would you like me to now generate the following for you?
-- `CONTRIBUTING.md`
-- `CODE_OF_CONDUCT.md`
-- `.github/ISSUE_TEMPLATE/bug_report.md`
-- `.github/PULL_REQUEST_TEMPLATE.md`
-- GitHub Actions workflow for automatic testing?
-
-Just say **“generate all contributor files”** and I’ll do it in seconds.
-
----
-
 ## 🙏 Support & Contributions
 
 Your contributions make this project better — whether it's reporting a bug, suggesting a feature, improving the documentation, or writing code. We welcome developers of all levels to participate!
