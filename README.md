@@ -1,3 +1,6 @@
+<p style="height:60px; width: 100%; background-color: Red; color: white; font-weight: 500; text-align: center;">
+  Check And Fix Errors (Recommended & PR Per/Error)
+</p>
 <p align="center">
   <img src="https://github.com/jflatdb/jflatdb/raw/main/assets/logo/logo.png" width="200" alt="JFlatDB Logo" />
 </p>
