@@ -35,3 +35,88 @@
 [2025-10-01 19:01:29] [INFO] Database initialized
 [2025-10-01 19:01:29] [INFO] Inserted record: {'id': 1, 'name': 'Alice', 'email': 'alice@example.com'}
 [2025-10-01 19:01:29] [INFO] Inserted record: {'id': 2, 'name': 'Bob', 'email': 'bob@example.com'}
+[2025-10-01 21:52:13] [INFO] Database initialized
+[2025-10-01 21:52:13] [INFO] Inserted record: {'id': 1, 'name': 'Alice', 'age': 25, 'city': 'New York'}
+[2025-10-01 21:52:13] [INFO] Inserted record: {'id': 2, 'name': 'Bob', 'age': 30, 'city': 'London'}
+[2025-10-01 21:52:13] [INFO] Inserted record: {'id': 3, 'name': 'Charlie', 'age': 20, 'city': 'Paris'}
+[2025-10-01 21:52:13] [INFO] Inserted record: {'id': 4, 'name': 'Diana', 'age': 35, 'city': 'Tokyo'}
+[2025-10-01 21:52:13] [INFO] Inserted record: {'id': 5, 'name': 'Eve', 'age': 28, 'city': 'Berlin'}
+[2025-10-01 21:53:13] [INFO] Database initialized
+[2025-10-01 21:53:13] [INFO] Inserted record: {'id': 1, 'name': 'Alice', 'age': 25, 'city': 'New York'}
+[2025-10-01 21:53:13] [INFO] Inserted record: {'id': 2, 'name': 'Bob', 'age': 30, 'city': 'London'}
+[2025-10-01 21:53:13] [INFO] Inserted record: {'id': 3, 'name': 'Charlie', 'age': 20, 'city': 'Paris'}
+[2025-10-01 21:53:13] [INFO] Inserted record: {'id': 4, 'name': 'Diana', 'age': 35, 'city': 'Tokyo'}
+[2025-10-01 21:53:13] [INFO] Inserted record: {'id': 5, 'name': 'Eve', 'age': 28, 'city': 'Berlin'}
+[2025-10-01 21:53:32] [INFO] Database initialized
+[2025-10-01 21:53:32] [INFO] Inserted record: {'id': 1, 'name': 'Alice', 'age': 25, 'city': 'New York'}
+[2025-10-01 21:53:32] [INFO] Inserted record: {'id': 2, 'name': 'Bob', 'age': 30, 'city': 'London'}
+[2025-10-01 21:53:32] [INFO] Inserted record: {'id': 3, 'name': 'Charlie', 'age': 20, 'city': 'Paris'}
+[2025-10-01 21:53:32] [INFO] Inserted record: {'id': 4, 'name': 'Diana', 'age': 35, 'city': 'Tokyo'}
+[2025-10-01 21:53:32] [INFO] Inserted record: {'id': 5, 'name': 'Eve', 'age': 28, 'city': 'Berlin'}
+[2025-10-01 21:54:07] [INFO] Database initialized
+[2025-10-01 21:54:07] [INFO] Inserted record: {'id': 1, 'name': 'Alice', 'age': 25, 'city': 'New York'}
+[2025-10-01 21:54:07] [INFO] Inserted record: {'id': 2, 'name': 'Bob', 'age': 30, 'city': 'London'}
+[2025-10-01 21:54:07] [INFO] Inserted record: {'id': 3, 'name': 'Charlie', 'age': 20, 'city': 'Paris'}
+[2025-10-01 21:54:07] [INFO] Inserted record: {'id': 4, 'name': 'Diana', 'age': 35, 'city': 'Tokyo'}
+[2025-10-01 21:54:07] [INFO] Inserted record: {'id': 5, 'name': 'Eve', 'age': 28, 'city': 'Berlin'}
+[2025-10-01 21:54:52] [INFO] Database initialized
+[2025-10-01 21:54:52] [INFO] Inserted record: {'id': 1, 'name': 'Alice', 'age': 25, 'city': 'New York'}
+[2025-10-01 21:54:52] [INFO] Inserted record: {'id': 2, 'name': 'Bob', 'age': 30, 'city': 'London'}
+[2025-10-01 21:54:52] [INFO] Inserted record: {'id': 3, 'name': 'Charlie', 'age': 20, 'city': 'Paris'}
+[2025-10-01 21:54:52] [INFO] Inserted record: {'id': 4, 'name': 'Diana', 'age': 35, 'city': 'Tokyo'}
+[2025-10-01 21:54:52] [INFO] Inserted record: {'id': 5, 'name': 'Eve', 'age': 28, 'city': 'Berlin'}
+[2025-10-01 22:19:13] [INFO] Database initialized
+[2025-10-01 22:19:13] [INFO] Inserted record: {'id': 1, 'name': 'Alice', 'age': 25, 'city': 'New York'}
+[2025-10-01 22:19:13] [INFO] Inserted record: {'id': 2, 'name': 'Bob', 'age': 30, 'city': 'London'}
+[2025-10-01 22:19:13] [INFO] Inserted record: {'id': 3, 'name': 'Charlie', 'age': 20, 'city': 'Paris'}
+[2025-10-01 22:19:13] [INFO] Inserted record: {'id': 4, 'name': 'Diana', 'age': 35, 'city': 'Tokyo'}
+[2025-10-01 22:19:13] [INFO] Inserted record: {'id': 5, 'name': 'Eve', 'age': 28, 'city': 'Berlin'}
+[2025-10-01 22:19:34] [INFO] Database initialized
+[2025-10-01 22:19:34] [INFO] Inserted record: {'name': 'Test User', 'age': 30}
+[2025-10-01 22:22:13] [INFO] Database initialized
+[2025-10-01 22:22:13] [INFO] Inserted record: {'id': 1, 'name': 'Alice', 'age': 25, 'city': 'New York'}
+[2025-10-01 22:22:13] [INFO] Inserted record: {'id': 2, 'name': 'Bob', 'age': 30, 'city': 'London'}
+[2025-10-01 22:22:13] [INFO] Inserted record: {'id': 3, 'name': 'Charlie', 'age': 20, 'city': 'Paris'}
+[2025-10-01 22:22:13] [INFO] Inserted record: {'id': 4, 'name': 'Diana', 'age': 35, 'city': 'Tokyo'}
+[2025-10-01 22:22:13] [INFO] Inserted record: {'id': 5, 'name': 'Eve', 'age': 28, 'city': 'Berlin'}
+[2025-10-01 22:32:46] [INFO] Database initialized
+[2025-10-01 22:32:46] [INFO] Inserted record: {'id': 1, 'name': 'Alice', 'age': None, 'score': 85.5}
+[2025-10-01 22:32:46] [INFO] Inserted record: {'id': 2, 'name': '', 'age': 25, 'score': 0}
+[2025-10-01 22:32:46] [INFO] Inserted record: {'id': 3, 'name': 'Bob', 'age': 30, 'score': None}
+[2025-10-01 22:32:46] [INFO] Inserted record: {'id': 4, 'score': 95.0}
+[2025-10-01 22:32:46] [INFO] Inserted record: {'id': 5, 'name': 'Charlie', 'age': 0, 'score': 75}
+[2025-10-01 22:32:46] [INFO] Inserted record: {'id': 6, 'name': 'dave', 'age': 35, 'score': 88.5}
+[2025-10-01 22:35:48] [INFO] Database initialized
+[2025-10-01 22:35:48] [INFO] Inserted record: {'id': 1, 'name': 'Alice', 'age': None, 'score': 85.5}
+[2025-10-01 22:35:48] [INFO] Inserted record: {'id': 2, 'name': '', 'age': 25, 'score': 0}
+[2025-10-01 22:35:48] [INFO] Inserted record: {'id': 3, 'name': 'Bob', 'age': 30, 'score': None}
+[2025-10-01 22:35:48] [INFO] Inserted record: {'id': 4, 'score': 95.0}
+[2025-10-01 22:35:48] [INFO] Inserted record: {'id': 5, 'name': 'Charlie', 'age': 0, 'score': 75}
+[2025-10-01 22:35:48] [INFO] Inserted record: {'id': 6, 'name': 'dave', 'age': 35, 'score': 88.5}
+[2025-10-01 22:36:00] [INFO] Database initialized
+[2025-10-01 22:36:00] [INFO] Inserted record: {'id': 1, 'name': 'Alice', 'age': 25, 'city': 'New York'}
+[2025-10-01 22:36:00] [INFO] Inserted record: {'id': 2, 'name': 'Bob', 'age': 30, 'city': 'London'}
+[2025-10-01 22:36:00] [INFO] Inserted record: {'id': 3, 'name': 'Charlie', 'age': 20, 'city': 'Paris'}
+[2025-10-01 22:36:00] [INFO] Inserted record: {'id': 4, 'name': 'Diana', 'age': 35, 'city': 'Tokyo'}
+[2025-10-01 22:36:00] [INFO] Inserted record: {'id': 5, 'name': 'Eve', 'age': 28, 'city': 'Berlin'}
+[2025-10-01 22:36:23] [INFO] Database initialized
+[2025-10-01 22:36:23] [INFO] Inserted record: {'id': 1, 'name': 'Alice'}
+[2025-10-01 22:36:23] [INFO] Inserted record: {'id': 2, 'name': 'Bob'}
+[2025-10-01 22:36:23] [INFO] Inserted record: {'id': 3, 'name': 'Charlie'}
+[2025-10-01 22:36:49] [INFO] Database initialized
+[2025-10-01 22:36:49] [INFO] Inserted record: {'id': 1, 'name': 'Alice'}
+[2025-10-01 22:36:49] [INFO] Inserted record: {'id': 2, 'name': 'Bob'}
+[2025-10-01 22:36:49] [INFO] Inserted record: {'id': 3, 'name': 'Charlie'}
+[2025-10-01 22:36:58] [INFO] Database initialized
+[2025-10-01 22:36:58] [INFO] Inserted record: {'id': 1, 'name': 'Alice', 'age': 25, 'city': 'New York'}
+[2025-10-01 22:36:58] [INFO] Inserted record: {'id': 2, 'name': 'Bob', 'age': 30, 'city': 'London'}
+[2025-10-01 22:36:58] [INFO] Inserted record: {'id': 3, 'name': 'Charlie', 'age': 20, 'city': 'Paris'}
+[2025-10-01 22:36:58] [INFO] Inserted record: {'id': 4, 'name': 'Diana', 'age': 35, 'city': 'Tokyo'}
+[2025-10-01 22:36:58] [INFO] Inserted record: {'id': 5, 'name': 'Eve', 'age': 28, 'city': 'Berlin'}
+[2025-10-01 22:37:06] [INFO] Database initialized
+[2025-10-01 22:37:06] [INFO] Inserted record: {'id': 1, 'name': 'Alice', 'age': None, 'score': 85.5}
+[2025-10-01 22:37:06] [INFO] Inserted record: {'id': 2, 'name': '', 'age': 25, 'score': 0}
+[2025-10-01 22:37:06] [INFO] Inserted record: {'id': 3, 'name': 'Bob', 'age': 30, 'score': None}
+[2025-10-01 22:37:06] [INFO] Inserted record: {'id': 4, 'score': 95.0}
+[2025-10-01 22:37:06] [INFO] Inserted record: {'id': 5, 'name': 'Charlie', 'age': 0, 'score': 75}
+[2025-10-01 22:37:06] [INFO] Inserted record: {'id': 6, 'name': 'dave', 'age': 35, 'score': 88.5}
