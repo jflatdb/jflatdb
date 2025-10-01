@@ -120,3 +120,9 @@
 [2025-10-01 22:37:06] [INFO] Inserted record: {'id': 4, 'score': 95.0}
 [2025-10-01 22:37:06] [INFO] Inserted record: {'id': 5, 'name': 'Charlie', 'age': 0, 'score': 75}
 [2025-10-01 22:37:06] [INFO] Inserted record: {'id': 6, 'name': 'dave', 'age': 35, 'score': 88.5}
+[2025-10-01 22:48:20] [INFO] Database initialized
+[2025-10-01 22:48:20] [INFO] Inserted record: {'id': 1, 'name': 'Alice', 'age': 25, 'city': 'New York'}
+[2025-10-01 22:48:20] [INFO] Inserted record: {'id': 2, 'name': 'Bob', 'age': 30, 'city': 'London'}
+[2025-10-01 22:48:20] [INFO] Inserted record: {'id': 3, 'name': 'Charlie', 'age': 20, 'city': 'Paris'}
+[2025-10-01 22:48:20] [INFO] Inserted record: {'id': 4, 'name': 'Diana', 'age': 35, 'city': 'Tokyo'}
+[2025-10-01 22:48:20] [INFO] Inserted record: {'id': 5, 'name': 'Eve', 'age': 28, 'city': 'Berlin'}
