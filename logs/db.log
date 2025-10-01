@@ -32,3 +32,6 @@
 [2025-07-10 10:28:51] [INFO] Database initialized
 [2025-07-10 10:28:51] [INFO] Inserted record: {'id': 1, 'name': 'Alice'}
 [2025-07-10 10:29:04] [INFO] Database initialized
+[2025-10-01 19:01:29] [INFO] Database initialized
+[2025-10-01 19:01:29] [INFO] Inserted record: {'id': 1, 'name': 'Alice', 'email': 'alice@example.com'}
+[2025-10-01 19:01:29] [INFO] Inserted record: {'id': 2, 'name': 'Bob', 'email': 'bob@example.com'}
