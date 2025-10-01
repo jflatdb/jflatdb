@@ -17,19 +17,8 @@ class Indexer:
                 self.indexes[key][value].append(record)
 
     def query(self, data: list, conditions: dict):
-        results = set()
-        keys = list(conditions.keys())
-        if not keys:
+        # For correctness and simplicity, filter directly against data using all conditions
+        if not conditions:
             return data
-
-        # Try to use the index
-        for key in keys:
-            if key in self.indexes and conditions[key] in self.indexes[key]:
-                found = self.indexes[key][conditions[key]]
-                results.update(found)
-
-        if not results:
-            return [item for item in data if all(item.get(k) == v for k, v in conditions.items())]
-
-        return list(results)
+        return [item for item in data if all(item.get(k) == v for k, v in conditions.items())]
 
