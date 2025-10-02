@@ -31,4 +31,4 @@ jobs:
       run: echo "PYTHONPATH=$PYTHONPATH:$(pwd)" >> $GITHUB_ENV
 
     - name: Run tests
-      run: pytest
+      run: python3 -m pytest
