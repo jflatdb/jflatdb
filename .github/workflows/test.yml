@@ -27,6 +27,8 @@ jobs:
         else
           pip install pytest
         fi
+    - name: Add jflatdb to PYTHONPATH
+      run: echo "PYTHONPATH=$PYTHONPATH:$(pwd)" >> $GITHUB_ENV
 
     - name: Run tests
       run: pytest
