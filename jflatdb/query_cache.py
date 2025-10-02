@@ -122,7 +122,9 @@ class QueryCache:
             dict: Statistics including hits, misses, size, and hit rate
         """
         total_requests = self.hits + self.misses
-        hit_rate = (self.hits / total_requests * 100) if total_requests > 0 else 0
+        hit_rate = (
+            (self.hits / total_requests * 100) if total_requests > 0 else 0
+        )
 
         return {
             "enabled": self.enabled,

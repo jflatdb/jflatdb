@@ -12,6 +12,7 @@ from .query_engine import QueryEngine
 from .query_cache import QueryCache
 from .utils.logger import Logger
 
+
 class Database:
     def __init__(self, path, password, cache_enabled=True, cache_size=100):
         self.logger = Logger()
@@ -23,24 +24,28 @@ class Database:
         self.cache = QueryCache(max_size=cache_size, enabled=cache_enabled)
         self.data = self.load()
         self.query_engine = QueryEngine(self.data)
-        self.logger.info("Database initialized") # test logger
+        self.logger.info("Database initialized")  # test logger
 
     def load(self):
         """Load database contents from storage with robust error handling.
 
         Behavior:
-        - If the file does not exist: log a warning and return an empty list.
+        - If the file does not exist: log a warning and return empty list.
         - If the file is empty: log a warning and return an empty list.
-        - If decryption/parsing fails: log an error and raise RuntimeError.
+        - If decryption/parsing fails: log error and raise RuntimeError.
         """
         try:
             if not os.path.exists(self.storage.filepath):
-                self.logger.warn("Database file not found, initializing empty dataset")
+                self.logger.warn(
+                    "Database file not found, initializing empty dataset"
+                )
                 return []
 
             raw = self.storage.read()
             if not raw:
-                self.logger.warn("Database file is empty, initializing empty dataset")
+                self.logger.warn(
+                    "Database file is empty, initializing empty dataset"
+                )
                 return []
 
             return self.security.decrypt(raw)
@@ -56,7 +61,7 @@ class Database:
     def insert(self, record: dict):
         self.schema.validate(record, self.data)
         self.data.append(record)
-        self.logger.info(f"Inserted record: {record}") # Logger Test
+        self.logger.info(f"Inserted record: {record}")  # Logger Test
         self.indexer.build(self.data)
         self.cache.invalidate()  # Invalidate cache on insert
         self.save()
@@ -83,10 +88,13 @@ class Database:
         self.save()
 
     def delete(self, query):
-        self.data = [d for d in self.data if not all(d[k] == v for k, v in query.items())]
+        self.data = [
+            d for d in self.data
+            if not all(d[k] == v for k, v in query.items())
+        ]
         self.cache.invalidate()  # Invalidate cache on delete
         self.save()
-        
+
     # ----------- BUILT-IN QUERY FUNCTIONS ------------
     def min(self, column):
         return self.query_engine.min(column)

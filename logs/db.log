@@ -126,3 +126,234 @@
 [2025-10-01 22:48:20] [INFO] Inserted record: {'id': 3, 'name': 'Charlie', 'age': 20, 'city': 'Paris'}
 [2025-10-01 22:48:20] [INFO] Inserted record: {'id': 4, 'name': 'Diana', 'age': 35, 'city': 'Tokyo'}
 [2025-10-01 22:48:20] [INFO] Inserted record: {'id': 5, 'name': 'Eve', 'age': 28, 'city': 'Berlin'}
+[2025-10-02 21:40:36] [WARN] Database file not found, initializing empty dataset
+[2025-10-02 21:40:36] [INFO] Database initialized
+[2025-10-02 21:40:36] [WARN] Database file is empty, initializing empty dataset
+[2025-10-02 21:40:36] [INFO] Database initialized
+[2025-10-02 21:40:36] [ERROR] Failed to load database: invalid non-printable character U+0016 (<string>, line 1)
+[2025-10-02 21:40:49] [INFO] Database initialized
+[2025-10-02 21:41:14] [WARN] Database file not found, initializing empty dataset
+[2025-10-02 21:41:14] [INFO] Database initialized
+[2025-10-02 21:45:53] [WARN] Database file not found, initializing empty dataset
+[2025-10-02 21:45:53] [INFO] Database initialized
+[2025-10-02 21:46:20] [WARN] Database file not found, initializing empty dataset
+[2025-10-02 21:46:20] [INFO] Database initialized
+[2025-10-02 21:46:20] [INFO] Inserted record: {'id': 1, 'name': 'John', 'grade': 85}
+[2025-10-02 21:46:20] [INFO] Inserted record: {'id': 2, 'name': 'Sarah', 'grade': 92}
+[2025-10-02 21:46:20] [INFO] Inserted record: {'id': 3, 'name': 'Mike', 'grade': 78}
+[2025-10-02 21:55:22] [WARN] Database file not found, initializing empty dataset
+[2025-10-02 21:55:22] [INFO] Database initialized
+[2025-10-02 21:55:22] [WARN] Database file not found, initializing empty dataset
+[2025-10-02 21:55:22] [INFO] Database initialized
+[2025-10-02 21:55:22] [WARN] Database file not found, initializing empty dataset
+[2025-10-02 21:55:22] [INFO] Database initialized
+[2025-10-02 21:55:22] [INFO] Inserted record: {'id': 1, 'name': 'Alice'}
+[2025-10-02 21:55:22] [INFO] Inserted record: {'id': 2, 'name': 'Bob'}
+[2025-10-02 21:55:22] [WARN] Database file not found, initializing empty dataset
+[2025-10-02 21:55:22] [INFO] Database initialized
+[2025-10-02 21:55:22] [INFO] Inserted record: {'id': 1, 'name': 'Alice'}
+[2025-10-02 21:55:22] [INFO] Inserted record: {'id': 2, 'name': 'Bob'}
+[2025-10-02 21:55:22] [WARN] Database file not found, initializing empty dataset
+[2025-10-02 21:55:22] [INFO] Database initialized
+[2025-10-02 21:55:22] [INFO] Inserted record: {'id': 1, 'name': 'Alice', 'age': 25}
+[2025-10-02 21:55:22] [WARN] Database file not found, initializing empty dataset
+[2025-10-02 21:55:22] [INFO] Database initialized
+[2025-10-02 21:55:22] [INFO] Inserted record: {'id': 1, 'name': 'Alice'}
+[2025-10-02 21:55:22] [INFO] Inserted record: {'id': 2, 'name': 'Bob'}
+[2025-10-02 21:55:22] [WARN] Database file not found, initializing empty dataset
+[2025-10-02 21:55:22] [INFO] Database initialized
+[2025-10-02 21:55:22] [INFO] Inserted record: {'id': 1, 'name': 'Alice'}
+[2025-10-02 21:55:22] [WARN] Database file not found, initializing empty dataset
+[2025-10-02 21:55:22] [INFO] Database initialized
+[2025-10-02 21:55:22] [INFO] Inserted record: {'id': 1, 'name': 'Alice', 'age': 25}
+[2025-10-02 21:55:22] [INFO] Inserted record: {'id': 2, 'name': 'Bob', 'age': 30}
+[2025-10-02 21:55:22] [INFO] Inserted record: {'id': 3, 'name': 'Charlie', 'age': 35}
+[2025-10-02 21:55:22] [WARN] Database file not found, initializing empty dataset
+[2025-10-02 21:55:22] [INFO] Database initialized
+[2025-10-02 21:55:22] [INFO] Inserted record: {'id': 1, 'age': 20}
+[2025-10-02 21:55:22] [INFO] Inserted record: {'id': 2, 'age': 25}
+[2025-10-02 21:55:22] [INFO] Inserted record: {'id': 3, 'age': 30}
+[2025-10-02 21:55:32] [WARN] Database file not found, initializing empty dataset
+[2025-10-02 21:55:32] [INFO] Database initialized
+[2025-10-02 21:55:32] [WARN] Database file is empty, initializing empty dataset
+[2025-10-02 21:55:32] [INFO] Database initialized
+[2025-10-02 21:55:32] [ERROR] Failed to load database: invalid non-printable character U+0016 (<string>, line 1)
+[2025-10-02 21:55:32] [WARN] Database file not found, initializing empty dataset
+[2025-10-02 21:55:32] [INFO] Database initialized
+[2025-10-02 21:55:32] [WARN] Database file not found, initializing empty dataset
+[2025-10-02 21:55:32] [INFO] Database initialized
+[2025-10-02 21:55:32] [WARN] Database file not found, initializing empty dataset
+[2025-10-02 21:55:32] [INFO] Database initialized
+[2025-10-02 21:55:32] [INFO] Inserted record: {'id': 1, 'name': 'Alice'}
+[2025-10-02 21:55:32] [INFO] Inserted record: {'id': 2, 'name': 'Bob'}
+[2025-10-02 21:55:32] [WARN] Database file not found, initializing empty dataset
+[2025-10-02 21:55:32] [INFO] Database initialized
+[2025-10-02 21:55:32] [INFO] Inserted record: {'id': 1, 'name': 'Alice'}
+[2025-10-02 21:55:32] [INFO] Inserted record: {'id': 2, 'name': 'Bob'}
+[2025-10-02 21:55:32] [WARN] Database file not found, initializing empty dataset
+[2025-10-02 21:55:32] [INFO] Database initialized
+[2025-10-02 21:55:32] [INFO] Inserted record: {'id': 1, 'name': 'Alice', 'age': 25}
+[2025-10-02 21:55:32] [WARN] Database file not found, initializing empty dataset
+[2025-10-02 21:55:32] [INFO] Database initialized
+[2025-10-02 21:55:32] [INFO] Inserted record: {'id': 1, 'name': 'Alice'}
+[2025-10-02 21:55:32] [INFO] Inserted record: {'id': 2, 'name': 'Bob'}
+[2025-10-02 21:55:32] [WARN] Database file not found, initializing empty dataset
+[2025-10-02 21:55:32] [INFO] Database initialized
+[2025-10-02 21:55:32] [INFO] Inserted record: {'id': 1, 'name': 'Alice'}
+[2025-10-02 21:55:32] [WARN] Database file not found, initializing empty dataset
+[2025-10-02 21:55:32] [INFO] Database initialized
+[2025-10-02 21:55:32] [INFO] Inserted record: {'id': 1, 'name': 'Alice', 'age': 25}
+[2025-10-02 21:55:32] [INFO] Inserted record: {'id': 2, 'name': 'Bob', 'age': 30}
+[2025-10-02 21:55:32] [INFO] Inserted record: {'id': 3, 'name': 'Charlie', 'age': 35}
+[2025-10-02 21:55:32] [WARN] Database file not found, initializing empty dataset
+[2025-10-02 21:55:32] [INFO] Database initialized
+[2025-10-02 21:55:32] [INFO] Inserted record: {'id': 1, 'age': 20}
+[2025-10-02 21:55:32] [INFO] Inserted record: {'id': 2, 'age': 25}
+[2025-10-02 21:55:32] [INFO] Inserted record: {'id': 3, 'age': 30}
+[2025-10-02 21:58:55] [WARN] Database file not found, initializing empty dataset
+[2025-10-02 21:58:55] [INFO] Database initialized
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 0, 'name': 'User_0', 'age': 20, 'status': 'active'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 1, 'name': 'User_1', 'age': 21, 'status': 'inactive'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 2, 'name': 'User_2', 'age': 22, 'status': 'active'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 3, 'name': 'User_3', 'age': 23, 'status': 'inactive'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 4, 'name': 'User_4', 'age': 24, 'status': 'active'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 5, 'name': 'User_5', 'age': 25, 'status': 'inactive'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 6, 'name': 'User_6', 'age': 26, 'status': 'active'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 7, 'name': 'User_7', 'age': 27, 'status': 'inactive'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 8, 'name': 'User_8', 'age': 28, 'status': 'active'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 9, 'name': 'User_9', 'age': 29, 'status': 'inactive'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 10, 'name': 'User_10', 'age': 30, 'status': 'active'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 11, 'name': 'User_11', 'age': 31, 'status': 'inactive'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 12, 'name': 'User_12', 'age': 32, 'status': 'active'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 13, 'name': 'User_13', 'age': 33, 'status': 'inactive'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 14, 'name': 'User_14', 'age': 34, 'status': 'active'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 15, 'name': 'User_15', 'age': 35, 'status': 'inactive'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 16, 'name': 'User_16', 'age': 36, 'status': 'active'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 17, 'name': 'User_17', 'age': 37, 'status': 'inactive'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 18, 'name': 'User_18', 'age': 38, 'status': 'active'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 19, 'name': 'User_19', 'age': 39, 'status': 'inactive'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 20, 'name': 'User_20', 'age': 40, 'status': 'active'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 21, 'name': 'User_21', 'age': 41, 'status': 'inactive'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 22, 'name': 'User_22', 'age': 42, 'status': 'active'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 23, 'name': 'User_23', 'age': 43, 'status': 'inactive'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 24, 'name': 'User_24', 'age': 44, 'status': 'active'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 25, 'name': 'User_25', 'age': 45, 'status': 'inactive'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 26, 'name': 'User_26', 'age': 46, 'status': 'active'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 27, 'name': 'User_27', 'age': 47, 'status': 'inactive'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 28, 'name': 'User_28', 'age': 48, 'status': 'active'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 29, 'name': 'User_29', 'age': 49, 'status': 'inactive'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 30, 'name': 'User_30', 'age': 20, 'status': 'active'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 31, 'name': 'User_31', 'age': 21, 'status': 'inactive'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 32, 'name': 'User_32', 'age': 22, 'status': 'active'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 33, 'name': 'User_33', 'age': 23, 'status': 'inactive'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 34, 'name': 'User_34', 'age': 24, 'status': 'active'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 35, 'name': 'User_35', 'age': 25, 'status': 'inactive'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 36, 'name': 'User_36', 'age': 26, 'status': 'active'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 37, 'name': 'User_37', 'age': 27, 'status': 'inactive'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 38, 'name': 'User_38', 'age': 28, 'status': 'active'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 39, 'name': 'User_39', 'age': 29, 'status': 'inactive'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 40, 'name': 'User_40', 'age': 30, 'status': 'active'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 41, 'name': 'User_41', 'age': 31, 'status': 'inactive'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 42, 'name': 'User_42', 'age': 32, 'status': 'active'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 43, 'name': 'User_43', 'age': 33, 'status': 'inactive'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 44, 'name': 'User_44', 'age': 34, 'status': 'active'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 45, 'name': 'User_45', 'age': 35, 'status': 'inactive'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 46, 'name': 'User_46', 'age': 36, 'status': 'active'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 47, 'name': 'User_47', 'age': 37, 'status': 'inactive'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 48, 'name': 'User_48', 'age': 38, 'status': 'active'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 49, 'name': 'User_49', 'age': 39, 'status': 'inactive'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 50, 'name': 'User_50', 'age': 40, 'status': 'active'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 51, 'name': 'User_51', 'age': 41, 'status': 'inactive'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 52, 'name': 'User_52', 'age': 42, 'status': 'active'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 53, 'name': 'User_53', 'age': 43, 'status': 'inactive'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 54, 'name': 'User_54', 'age': 44, 'status': 'active'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 55, 'name': 'User_55', 'age': 45, 'status': 'inactive'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 56, 'name': 'User_56', 'age': 46, 'status': 'active'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 57, 'name': 'User_57', 'age': 47, 'status': 'inactive'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 58, 'name': 'User_58', 'age': 48, 'status': 'active'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 59, 'name': 'User_59', 'age': 49, 'status': 'inactive'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 60, 'name': 'User_60', 'age': 20, 'status': 'active'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 61, 'name': 'User_61', 'age': 21, 'status': 'inactive'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 62, 'name': 'User_62', 'age': 22, 'status': 'active'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 63, 'name': 'User_63', 'age': 23, 'status': 'inactive'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 64, 'name': 'User_64', 'age': 24, 'status': 'active'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 65, 'name': 'User_65', 'age': 25, 'status': 'inactive'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 66, 'name': 'User_66', 'age': 26, 'status': 'active'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 67, 'name': 'User_67', 'age': 27, 'status': 'inactive'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 68, 'name': 'User_68', 'age': 28, 'status': 'active'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 69, 'name': 'User_69', 'age': 29, 'status': 'inactive'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 70, 'name': 'User_70', 'age': 30, 'status': 'active'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 71, 'name': 'User_71', 'age': 31, 'status': 'inactive'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 72, 'name': 'User_72', 'age': 32, 'status': 'active'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 73, 'name': 'User_73', 'age': 33, 'status': 'inactive'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 74, 'name': 'User_74', 'age': 34, 'status': 'active'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 75, 'name': 'User_75', 'age': 35, 'status': 'inactive'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 76, 'name': 'User_76', 'age': 36, 'status': 'active'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 77, 'name': 'User_77', 'age': 37, 'status': 'inactive'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 78, 'name': 'User_78', 'age': 38, 'status': 'active'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 79, 'name': 'User_79', 'age': 39, 'status': 'inactive'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 80, 'name': 'User_80', 'age': 40, 'status': 'active'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 81, 'name': 'User_81', 'age': 41, 'status': 'inactive'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 82, 'name': 'User_82', 'age': 42, 'status': 'active'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 83, 'name': 'User_83', 'age': 43, 'status': 'inactive'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 84, 'name': 'User_84', 'age': 44, 'status': 'active'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 85, 'name': 'User_85', 'age': 45, 'status': 'inactive'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 86, 'name': 'User_86', 'age': 46, 'status': 'active'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 87, 'name': 'User_87', 'age': 47, 'status': 'inactive'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 88, 'name': 'User_88', 'age': 48, 'status': 'active'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 89, 'name': 'User_89', 'age': 49, 'status': 'inactive'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 90, 'name': 'User_90', 'age': 20, 'status': 'active'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 91, 'name': 'User_91', 'age': 21, 'status': 'inactive'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 92, 'name': 'User_92', 'age': 22, 'status': 'active'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 93, 'name': 'User_93', 'age': 23, 'status': 'inactive'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 94, 'name': 'User_94', 'age': 24, 'status': 'active'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 95, 'name': 'User_95', 'age': 25, 'status': 'inactive'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 96, 'name': 'User_96', 'age': 26, 'status': 'active'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 97, 'name': 'User_97', 'age': 27, 'status': 'inactive'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 98, 'name': 'User_98', 'age': 28, 'status': 'active'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 99, 'name': 'User_99', 'age': 29, 'status': 'inactive'}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 200, 'name': 'New_User', 'age': 25, 'status': 'active'}
+[2025-10-02 21:58:55] [WARN] Database file not found, initializing empty dataset
+[2025-10-02 21:58:55] [INFO] Database initialized
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 0, 'value': 0}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 1, 'value': 10}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 2, 'value': 20}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 3, 'value': 30}
+[2025-10-02 21:58:55] [INFO] Inserted record: {'id': 4, 'value': 40}
+[2025-10-02 22:07:29] [WARN] Database file not found, initializing empty dataset
+[2025-10-02 22:07:29] [INFO] Database initialized
+[2025-10-02 22:07:29] [WARN] Database file is empty, initializing empty dataset
+[2025-10-02 22:07:29] [INFO] Database initialized
+[2025-10-02 22:07:29] [ERROR] Failed to load database: invalid non-printable character U+0016 (<string>, line 1)
+[2025-10-02 22:07:29] [WARN] Database file not found, initializing empty dataset
+[2025-10-02 22:07:29] [INFO] Database initialized
+[2025-10-02 22:07:29] [WARN] Database file not found, initializing empty dataset
+[2025-10-02 22:07:29] [INFO] Database initialized
+[2025-10-02 22:07:29] [WARN] Database file not found, initializing empty dataset
+[2025-10-02 22:07:29] [INFO] Database initialized
+[2025-10-02 22:07:29] [INFO] Inserted record: {'id': 1, 'name': 'Alice'}
+[2025-10-02 22:07:29] [INFO] Inserted record: {'id': 2, 'name': 'Bob'}
+[2025-10-02 22:07:29] [WARN] Database file not found, initializing empty dataset
+[2025-10-02 22:07:29] [INFO] Database initialized
+[2025-10-02 22:07:29] [INFO] Inserted record: {'id': 1, 'name': 'Alice'}
+[2025-10-02 22:07:29] [INFO] Inserted record: {'id': 2, 'name': 'Bob'}
+[2025-10-02 22:07:29] [WARN] Database file not found, initializing empty dataset
+[2025-10-02 22:07:29] [INFO] Database initialized
+[2025-10-02 22:07:29] [INFO] Inserted record: {'id': 1, 'name': 'Alice', 'age': 25}
+[2025-10-02 22:07:29] [WARN] Database file not found, initializing empty dataset
+[2025-10-02 22:07:29] [INFO] Database initialized
+[2025-10-02 22:07:29] [INFO] Inserted record: {'id': 1, 'name': 'Alice'}
+[2025-10-02 22:07:29] [INFO] Inserted record: {'id': 2, 'name': 'Bob'}
+[2025-10-02 22:07:29] [WARN] Database file not found, initializing empty dataset
+[2025-10-02 22:07:29] [INFO] Database initialized
+[2025-10-02 22:07:29] [INFO] Inserted record: {'id': 1, 'name': 'Alice'}
+[2025-10-02 22:07:29] [WARN] Database file not found, initializing empty dataset
+[2025-10-02 22:07:29] [INFO] Database initialized
+[2025-10-02 22:07:29] [INFO] Inserted record: {'id': 1, 'name': 'Alice', 'age': 25}
+[2025-10-02 22:07:29] [INFO] Inserted record: {'id': 2, 'name': 'Bob', 'age': 30}
+[2025-10-02 22:07:29] [INFO] Inserted record: {'id': 3, 'name': 'Charlie', 'age': 35}
+[2025-10-02 22:07:29] [WARN] Database file not found, initializing empty dataset
+[2025-10-02 22:07:29] [INFO] Database initialized
+[2025-10-02 22:07:29] [INFO] Inserted record: {'id': 1, 'age': 20}
+[2025-10-02 22:07:29] [INFO] Inserted record: {'id': 2, 'age': 25}
+[2025-10-02 22:07:29] [INFO] Inserted record: {'id': 3, 'age': 30}

@@ -1,5 +1,4 @@
 import os
-import pytest
 
 import jflatdb.storage as storage_module
 from jflatdb.database import Database
@@ -167,7 +166,9 @@ class TestDatabaseCacheIntegration:
     def test_database_cache_initialization(self, tmp_path, monkeypatch):
         _patch_storage_init_to_tmp(tmp_path, monkeypatch)
 
-        db = Database('test.json', password='test', cache_enabled=True, cache_size=50)
+        db = Database(
+            'test.json', password='test', cache_enabled=True, cache_size=50
+        )
 
         assert db.cache is not None
         assert db.cache.enabled is True

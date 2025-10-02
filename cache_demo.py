@@ -29,13 +29,19 @@ print("--- Demo 1: Cache Miss vs Cache Hit ---")
 start = time.time()
 result1 = db.find({"status": "active"})
 time1 = time.time() - start
-print(f"First query (cache miss): {time1*1000:.2f}ms - Found {len(result1)} records")
+print(
+    f"First query (cache miss): {time1*1000:.2f}ms - "
+    f"Found {len(result1)} records"
+)
 
 # Same query (cache hit)
 start = time.time()
 result2 = db.find({"status": "active"})
 time2 = time.time() - start
-print(f"Second query (cache hit): {time2*1000:.2f}ms - Found {len(result2)} records")
+print(
+    f"Second query (cache hit): {time2*1000:.2f}ms - "
+    f"Found {len(result2)} records"
+)
 
 speedup = time1 / time2 if time2 > 0 else float('inf')
 print(f"Speedup: {speedup:.1f}x faster\n")
@@ -47,7 +53,7 @@ print("--- Demo 2: Cache Statistics ---")
 db.find({"age": {"$gt": 25}})
 db.find({"age": {"$gt": 25}})  # Hit
 db.find({"status": "inactive"})
-db.find({"status": "inactive"}) # Hit
+db.find({"status": "inactive"})  # Hit
 db.find({"age": {"$between": [20, 30]}})
 
 stats = db.get_cache_stats()
@@ -66,7 +72,10 @@ print(f"Before insert - Cache size: {db.get_cache_stats()['size']}")
 
 # Insert invalidates cache
 db.insert({"id": 200, "name": "New_User", "age": 25, "status": "active"})
-print(f"After insert - Cache size: {db.get_cache_stats()['size']} (cache cleared)")
+print(
+    f"After insert - Cache size: {db.get_cache_stats()['size']} "
+    "(cache cleared)"
+)
 
 # Query again
 db.find({"name": "User_1"})
@@ -92,7 +101,11 @@ for _ in range(1000):
 time_without_cache = time.time() - start
 print(f"Without cache: {time_without_cache*1000:.2f}ms for 1000 queries")
 
-speedup = time_without_cache / time_with_cache if time_with_cache > 0 else float('inf')
+speedup = (
+    time_without_cache / time_with_cache
+    if time_with_cache > 0
+    else float('inf')
+)
 print(f"Speedup: {speedup:.1f}x faster with caching\n")
 
 # Re-enable cache
@@ -111,20 +124,27 @@ for i in range(5):
 small_cache_db.find({"id": 1})
 small_cache_db.find({"id": 2})
 small_cache_db.find({"id": 3})
-print(f"Cache size after 3 queries: {small_cache_db.get_cache_stats()['size']}")
+print(
+    f"Cache size after 3 queries: "
+    f"{small_cache_db.get_cache_stats()['size']}"
+)
 
 # Access id=1 (moves to most recent)
 small_cache_db.find({"id": 1})
 
 # Add new query (should evict id=2, the least recent)
 small_cache_db.find({"id": 4})
-print(f"Cache size after 4th query: {small_cache_db.get_cache_stats()['size']} (LRU eviction)")
+print(
+    f"Cache size after 4th query: "
+    f"{small_cache_db.get_cache_stats()['size']} (LRU eviction)"
+)
 
 # Verify id=2 is not in cache (cache miss)
 stats_before = small_cache_db.get_cache_stats()['misses']
 small_cache_db.find({"id": 2})
 stats_after = small_cache_db.get_cache_stats()['misses']
-print(f"Query for id=2: {'Cache miss (evicted)' if stats_after > stats_before else 'Cache hit'}\n")
+result = 'Cache miss (evicted)' if stats_after > stats_before else 'Cache hit'
+print(f"Query for id=2: {result}\n")
 
 # Final stats
 print("--- Final Cache Statistics ---")
