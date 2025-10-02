@@ -2,6 +2,8 @@
 Main JSONDatabase class
 """
 
+import os
+
 from .storage import Storage
 from .schema import Schema
 from .security import Security
@@ -22,8 +24,27 @@ class Database:
         self.logger.info("Database initialized") # test logger
 
     def load(self):
-        raw = self.storage.read()
-        return self.security.decrypt(raw)
+        """Load database contents from storage with robust error handling.
+
+        Behavior:
+        - If the file does not exist: log a warning and return an empty list.
+        - If the file is empty: log a warning and return an empty list.
+        - If decryption/parsing fails: log an error and raise RuntimeError.
+        """
+        try:
+            if not os.path.exists(self.storage.filepath):
+                self.logger.warn("Database file not found, initializing empty dataset")
+                return []
+
+            raw = self.storage.read()
+            if not raw:
+                self.logger.warn("Database file is empty, initializing empty dataset")
+                return []
+
+            return self.security.decrypt(raw)
+        except Exception as e:
+            self.logger.error(f"Failed to load database: {e}")
+            raise RuntimeError("Database file is corrupt or unreadable") from e
 
     def save(self):
         encrypted = self.security.encrypt(self.data)
