@@ -1,6 +1,3 @@
-<p style="height:60px; width: 100%; background-color: Red; color: white; font-weight: 500; text-align: center;">
-  Check And Fix Errors (Recommended & PR Per/Error)
-</p>
 <p align="center">
   <img src="https://github.com/jflatdb/jflatdb/raw/main/assets/logo/logo.png" width="200" alt="JFlatDB Logo" />
 </p>
@@ -43,15 +40,25 @@ pip install .
 ## Usage
 
 ```bash 
-from jflatdb import JFlatDB
+from jflatdb.database import Database
 
-db = JFlatDB("users.db")
+db = Database("users.json", password="your-password")
 
 # Create or insert data
 db.insert({"name": "Akki", "email": "akki@example.com"})
 
 # Find records
 users = db.find({"name": "Akki"})
+
+# Advanced queries with operators
+# Greater than, less than, etc.
+young_users = db.find({"age": {"$gt": 18, "$lt": 30}})
+# IN operator
+specific_ids = db.find({"id": {"$in": [1, 2, 3]}})
+# LIKE for pattern matching
+names_starting_with_a = db.find({"name": {"$like": "A%"}})
+# BETWEEN
+ages_in_range = db.find({"age": {"$between": [20, 30]}})
 
 # Update records
 db.update({"name": "Akki"}, {"email": "new@email.com"})
