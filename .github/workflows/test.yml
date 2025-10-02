@@ -34,6 +34,7 @@ jobs:
     - name: Add jflatdb to PYTHONPATH
       run: echo "PYTHONPATH=$PYTHONPATH:$(pwd)" >> $GITHUB_ENV
 
-    - name: Run tests
-      working-directory: examples
-      run: python3 -m pytest
+    - name: Run tests 
+      run: |
+        cd examples
+        python3 -m pytest
