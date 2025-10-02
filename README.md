@@ -65,6 +65,41 @@ db.update({"name": "Akki"}, {"email": "new@email.com"})
 
 # Delete records
 db.delete({"name": "Akki"})
+
+# Aggregate functions
+from jflatdb.query_engine import QueryEngine
+
+# Sample data
+data = [
+    {"id": 1, "name": "Alice", "salary": 3000},
+    {"id": 2, "name": "Bob", "salary": 4000},
+    {"id": 3, "name": "Charlie", "salary": 2500}
+]
+
+engine = QueryEngine(data)
+
+# Calculate sum
+total_salary = engine.sum("salary")  # 9500
+
+# Calculate average
+avg_salary = engine.avg("salary")  # 3166.67
+
+# Find minimum
+min_salary = engine.min("salary")  # 2500
+
+# Find maximum
+max_salary = engine.max("salary")  # 4000
+
+# Count records
+total_records = engine.count()  # 3
+records_with_salary = engine.count("salary")  # 3
+
+# Filter values between range
+mid_salaries = engine.between("salary", 2500, 3500)
+# [{"id": 1, "name": "Alice", "salary": 3000}, {"id": 3, "name": "Charlie", "salary": 2500}]
+
+# Group by column
+grouped = engine.group_by("department")
 ```
 
 ## 📁 Project Structure
