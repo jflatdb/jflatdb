@@ -105,6 +105,9 @@ class Database:
     def avg(self, column):
         return self.query_engine.avg(column)
 
+    def sum(self, column):
+        return self.query_engine.sum(column)
+
     def count(self, column=None):
         return self.query_engine.count(column)
 
