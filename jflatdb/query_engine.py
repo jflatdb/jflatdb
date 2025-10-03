@@ -4,6 +4,7 @@ In-Build Function(min,max,etc)
 
 from .exceptions.errors import QueryError
 
+
 class QueryEngine:
     def __init__(self, table_data):
         self.data = table_data
@@ -22,6 +23,10 @@ class QueryEngine:
     def avg(self, column):
         values = [row[column] for row in self.data if column in row and isinstance(row[column], (int, float))]
         return sum(values) / len(values) if values else None
+
+    def sum(self, column):
+        values = [row[column] for row in self.data if column in row and isinstance(row[column], (int, float))]
+        return sum(values) if values else 0
 
     def count(self, column=None):
         if column:
