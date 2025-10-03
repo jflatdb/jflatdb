@@ -265,6 +265,108 @@ engine2.distinct("v", include_none=True, sort=True)
 
 ---
 
+## String Functions
+
+### `upper(column)`
+
+Converts all string values in a column to uppercase.
+
+**Parameters:**
+- `column` (str): The column name.
+
+**Returns:**
+- `list`: A list of uppercase strings. Non-string values are replaced with `None`.
+
+**Example:**
+```python
+data = [{'name': 'Akki'}, {'name': 'Sam'}, {'name': 'neha'}]
+db = QueryEngine(data)
+print(db.upper("name"))
+# ["AKKI", "SAM", "NEHA"]
+```
+
+---
+
+### `lower(column)`
+
+Converts all string values in a column to lowercase.
+
+**Parameters:**
+- `column` (str): The column name.
+
+**Returns:**
+- `list`: A list of lowercase strings. Non-string values are replaced with `None`.
+
+**Example:**
+```python
+data = [{'city': 'Delhi'}, {'city': 'MUMBAI'}, {'city': 'Pune'}]
+db = QueryEngine(data)
+print(db.lower("city"))
+# ["delhi", "mumbai", "pune"]
+```
+
+---
+
+### `length(column)`
+
+Returns the length of string values in a column.
+
+**Parameters:**
+- `column` (str): The column name.
+
+**Returns:**
+- `list`: A list of integer lengths. Non-string values are replaced with `None`.
+
+**Example:**
+```python
+data = [{'description': 'A nice person.'}, {'description': 'Another one.'}]
+db = QueryEngine(data)
+print(db.length("description"))
+# [14, 12]
+```
+
+---
+
+### `concat(*columns)`
+
+Combines multiple string columns into one.
+
+**Parameters:**
+- `*columns` (str): One or more column names.
+
+**Returns:**
+- `list`: A list of concatenated strings.
+
+**Example:**
+```python
+data = [{'first_name': 'Akki', 'last_name': 'Kumar'}, {'first_name': 'Sam', 'last_name': 'Gupta'}]
+db = QueryEngine(data)
+print(db.concat("first_name", "last_name"))
+# ["AkkiKumar", "SamGupta"]
+```
+
+---
+
+### `trim(column)`
+
+Removes leading and trailing spaces from string values.
+
+**Parameters:**
+- `column` (str): The column name.
+
+**Returns:**
+- `list`: A list of trimmed strings. Non-string values are replaced with `None`.
+
+**Example:**
+```python
+data = [{'address': '  New Delhi  '}, {'address': 'Mumbai'}]
+db = QueryEngine(data)
+print(db.trim("address"))
+# ["New Delhi", "Mumbai"]
+```
+
+---
+
 ## Combining Operations
 
 QueryEngine operations can be combined for complex analysis:

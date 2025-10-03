@@ -100,3 +100,76 @@ class QueryEngine:
             return results
         except Exception as exc:
             raise QueryError(f"Cannot compute distinct for column: {column}") from exc
+
+    def upper(self, column):
+        """Converts all string values in a column to uppercase."""
+        try:
+            result = []
+            for row in self.data:
+                value = row.get(column)
+                if isinstance(value, str):
+                    result.append(value.upper())
+                else:
+                    result.append(None)
+            return result
+        except Exception:
+            raise QueryError(f"Cannot apply UPPER on column: {column}")
+
+    def lower(self, column):
+        """Converts all string values in a column to lowercase."""
+        try:
+            result = []
+            for row in self.data:
+                value = row.get(column)
+                if isinstance(value, str):
+                    result.append(value.lower())
+                else:
+                    result.append(None)
+            return result
+        except Exception:
+            raise QueryError(f"Cannot apply LOWER on column: {column}")
+
+    def length(self, column):
+        """Returns the length of string values in a column."""
+        try:
+            result = []
+            for row in self.data:
+                value = row.get(column)
+                if isinstance(value, str):
+                    result.append(len(value))
+                else:
+                    result.append(None)
+            return result
+        except Exception:
+            raise QueryError(f"Cannot compute LENGTH for column: {column}")
+
+    def concat(self, *columns):
+        """Combines multiple string columns into one."""
+        if not columns:
+            raise QueryError("CONCAT requires at least one column.")
+        try:
+            result = []
+            for row in self.data:
+                concatenated_str = ""
+                for col in columns:
+                    value = row.get(col)
+                    if isinstance(value, str):
+                        concatenated_str += value
+                result.append(concatenated_str)
+            return result
+        except Exception:
+            raise QueryError(f"Cannot CONCAT columns: {', '.join(columns)}")
+
+    def trim(self, column):
+        """Removes leading and trailing spaces from string values."""
+        try:
+            result = []
+            for row in self.data:
+                value = row.get(column)
+                if isinstance(value, str):
+                    result.append(value.strip())
+                else:
+                    result.append(None)
+            return result
+        except Exception:
+            raise QueryError(f"Cannot apply TRIM on column: {column}")
