@@ -226,6 +226,45 @@ grouped = engine.group_by("department")
 
 ---
 
+### `distinct(column, *, sort=False, include_none=False)`
+
+Returns unique values from a column.
+
+Parameters:
+- `column` (str): Column name to extract values from
+- `sort` (bool, default False): If True, sort the result. For mixed, non-comparable
+    types, a deterministic sort by representation is used.
+- `include_none` (bool, default False): If True, include `None` values in the output.
+
+Returns:
+- `list`: Unique values, preserving the first-seen order by default.
+
+Behavior:
+- By default, order of appearance is maintained.
+- `None` values are excluded by default; enable with `include_none=True`.
+- Handles both hashable and unhashable values (e.g., lists, dicts).
+
+Examples:
+
+```python
+engine = QueryEngine([
+        {"id": 1, "city": "Delhi"},
+        {"id": 2, "city": "Mumbai"},
+        {"id": 3, "city": "Delhi"},
+        {"id": 4, "city": "Chennai"},
+])
+
+engine.distinct("city")
+# ["Delhi", "Mumbai", "Chennai"]
+
+# Include None and sort
+engine2 = QueryEngine([{"v": None}, {"v": 2}, {"v": 1}, {"v": None}])
+engine2.distinct("v", include_none=True, sort=True)
+# Deterministically sorted list including None: [1, 2, None]
+```
+
+---
+
 ## Combining Operations
 
 QueryEngine operations can be combined for complex analysis:
