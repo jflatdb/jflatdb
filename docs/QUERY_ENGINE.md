@@ -78,7 +78,9 @@ Calculates the average (mean) of numeric values in a column.
 
 **Returns:**
 - `float`: Average of numeric values
-- `None`: If no numeric values found or empty dataset
+
+**Raises:**
+- `QueryError`: If the dataset is empty or the column contains no numeric values.
 
 **Examples:**
 
@@ -87,9 +89,13 @@ Calculates the average (mean) of numeric values in a column.
 avg_salary = engine.avg("salary")
 # Output: 3250.0
 
-# No numeric values
-result = engine.avg("name")
-# Output: None
+# Raises QueryError on empty or non-numeric data
+empty_engine = QueryEngine([])
+try:
+    empty_engine.avg("salary")
+except QueryError as e:
+    print(e)
+    # Output: Cannot compute avg for column: salary (empty dataset or no numeric values)
 ```
 
 ---
@@ -103,7 +109,9 @@ Finds the minimum value in a column.
 
 **Returns:**
 - `int` or `float`: Minimum numeric value
-- `None`: If no numeric values found or empty dataset
+
+**Raises:**
+- `QueryError`: If the dataset is empty or the column contains no numeric values.
 
 **Examples:**
 
@@ -124,7 +132,9 @@ Finds the maximum value in a column.
 
 **Returns:**
 - `int` or `float`: Maximum numeric value
-- `None`: If no numeric values found or empty dataset
+
+**Raises:**
+- `QueryError`: If the dataset is empty or the column contains no numeric values.
 
 **Examples:**
 
@@ -393,23 +403,22 @@ total = high_earner_engine.sum("salary")
 
 ## Error Handling
 
-QueryEngine methods handle edge cases gracefully:
+The QueryEngine is designed to provide clear and predictable behavior, especially with empty or invalid data.
 
+- **`sum()`**: Returns `0` for empty datasets or columns with no numeric values.
+- **`count()`**: Returns `0` for empty datasets.
+- **`between()` / `group_by()`**: Return `[]` or `{}` respectively for empty datasets.
+- **`min()` / `max()` / `avg()`**: Raise a `QueryError` if the dataset is empty or the target column contains no numeric values. This ensures that calculations are not performed on empty sets, preventing ambiguous results like `None` or `0`.
+
+**Example of `QueryError`:**
 ```python
-# Non-existent column
-result = engine.sum("nonexistent")
-# Output: 0
-
 # Empty dataset
-empty = QueryEngine([])
-result = empty.avg("salary")
-# Output: None
-
-# All non-numeric values
-text_data = [{"name": "Alice"}, {"name": "Bob"}]
-engine = QueryEngine(text_data)
-result = engine.sum("name")
-# Output: 0
+empty_engine = QueryEngine([])
+try:
+    result = empty_engine.avg("salary")
+except QueryError as e:
+    print(e)
+    # Output: Cannot compute avg for column: salary (empty dataset or no numeric values)
 ```
 
 ---

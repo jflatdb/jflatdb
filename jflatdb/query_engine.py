@@ -10,19 +10,22 @@ class QueryEngine:
         self.data = table_data
 
     def min(self, column):
-        try:
-            values = [row[column] for row in self.data if column in row and isinstance(row[column], (int, float))]
-            return min(values) if values else None
-        except Exception:
-            raise QueryError(f"Cannot compute min for column: {column}")
+        values = [row[column] for row in self.data if column in row and isinstance(row[column], (int, float))]
+        if not values:
+            raise QueryError(f"Cannot compute min for column: {column} (empty dataset or no numeric values)")
+        return min(values)
 
     def max(self, column):
         values = [row[column] for row in self.data if column in row and isinstance(row[column], (int, float))]
-        return max(values) if values else None
+        if not values:
+            raise QueryError(f"Cannot compute max for column: {column} (empty dataset or no numeric values)")
+        return max(values)
 
     def avg(self, column):
         values = [row[column] for row in self.data if column in row and isinstance(row[column], (int, float))]
-        return sum(values) / len(values) if values else None
+        if not values:
+            raise QueryError(f"Cannot compute avg for column: {column} (empty dataset or no numeric values)")
+        return sum(values) / len(values)
 
     def sum(self, column):
         values = [row[column] for row in self.data if column in row and isinstance(row[column], (int, float))]
