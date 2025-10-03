@@ -26,13 +26,8 @@ jobs:
 
     - name: Install dependencies
       run: |
-        if [ -f requirements.txt ]; then
-          pip install -r requirements.txt
-        else
-          pip install pytest
-        fi
-    - name: Add jflatdb to PYTHONPATH
-      run: echo "PYTHONPATH=$PYTHONPATH:$(pwd)" >> $GITHUB_ENV
+        pip install pytest
+        pip install -e .
 
-    - name: Run tests 
+    - name: Run tests
       run: python3 -m pytest
