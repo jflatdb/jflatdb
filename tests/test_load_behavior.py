@@ -9,6 +9,7 @@ def _patch_storage_init_to_tmp(tmp_path, monkeypatch):
     def _init(self, filename):
         self.folder = str(tmp_path)
         self.filepath = os.path.join(self.folder, filename)
+        self.wal_path = os.path.join(self.folder, f"{filename}.wal")
         os.makedirs(self.folder, exist_ok=True)
         return None
 
