@@ -7,30 +7,42 @@ class Indexer:
     def __init__(self):
         self.indexes = {}
 
-    def build(self, data: list):
+    def build(self, data: list, store_full=False):
+        """
+        Build indexes for the dataset.
+
+        Args:
+            data (list): List of record dictionaries.
+            store_full (bool): If True, store full records; if False, store only indices.
+        """
+        self.data = data  # Store original dataset
         self.indexes.clear()
-        for record in data:
+
+        for idx, record in enumerate(data):
             for key, value in record.items():
                 if key not in self.indexes:
                     self.indexes[key] = {}
                 if value not in self.indexes[key]:
                     self.indexes[key][value] = []
-                self.indexes[key][value].append(record)
+                if store_full:
+                    # Store full record (original behavior)
+                    self.indexes[key][value].append(record)
+                else:
+                    # Store only index to save memory
+                    self.indexes[key][value].append(idx)
 
-    def query(self, data: list, conditions: dict):
+    def query(self, conditions: dict, use_index=True):
         # For correctness and simplicity, filter directly against data using all conditions
         if not conditions:
-            return data
+            return self.data
         
         def matches_condition(item, key, value):
             item_value = item.get(key)
             if isinstance(value, dict):
                 # Handle operator queries
-                for op, op_value in value.items():
-                    # Skip None values for comparison operators
+             for op, op_value in value.items():
                     if item_value is None and op in ["$gt", "$lt", "$gte", "$lte", "$between"]:
-                        return False
-                        
+                       return False
                     try:
                         if op == "$gt" and not (item_value > op_value):
                             return False
@@ -53,11 +65,7 @@ class Indexer:
                             if item_value is None:
                                 return False
                             # SQL LIKE implementation: % for any chars, _ for single char
-                            # First escape regex special chars, but preserve % and _
-                            pattern = str(op_value)
-                            # Replace SQL wildcards with regex equivalents
-                            pattern = pattern.replace("%", ".*").replace("_", ".")
-                            # Add anchors if needed
+                            pattern = str(op_value).replace("%", ".*").replace("_", ".")
                             if not str(op_value).startswith("%"):
                                 pattern = "^" + pattern
                             if not str(op_value).endswith("%"):
@@ -65,12 +73,12 @@ class Indexer:
                             if not re.search(pattern, str(item_value), re.IGNORECASE):
                                 return False
                     except (TypeError, ValueError):
-                        # Handle comparison errors gracefully
-                        return False
-                return True
+                     return False
+             return True
             else:
                 # Simple equality
                 return item_value == value
         
-        return [item for item in data if all(matches_condition(item, k, v) for k, v in conditions.items())]
-
+        return [item for item in self.data if all(matches_condition(item, k, v) for k, v in conditions.items())]
+        
+    
