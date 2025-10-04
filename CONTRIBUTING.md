@@ -1,139 +1,158 @@
+# 🤝 Contributing to jflatdb
 
-# 🛠️ Contributing Guide for jflatdb
+Thank you for considering contributing to **jflatdb**! 🚀
+We’re excited to welcome developers, testers, writers, and enthusiasts to help improve this lightweight JSON-based flat database.
 
-Thank you for considering contributing to **jflatdb** — a simple, powerful flat-file database framework for Python.  
-We welcome all types of contributions: bug reports, feature ideas, code, tests, documentation, and more.
-
-> 🔰 New to open source? We love beginners! This guide will walk you through everything.
-
----
-
-## 📑 Table of Contents
-
-- [Code of Conduct](#-code-of-conduct)
-- [Getting Started](#-getting-started)
-- [How to Contribute](#-how-to-contribute)
-- [Project Structure](#-project-structure)
-- [Branching & Commit Style](#-branching--commit-style)
-- [Testing & Linting](#-testing--linting)
-- [Pull Request Checklist](#-pull-request-checklist)
-- [Contribution Types](#-contribution-types)
-- [Need Help?](#-need-help)
+This document provides guidelines, best practices, and steps to make contributing smooth and productive.
 
 ---
 
-## 💬 Code of Conduct
+## 📋 Table of Contents
 
-By contributing, you agree to follow our [Code of Conduct](CODE_OF_CONDUCT.md).  
-We aim to foster an open and welcoming environment for all.
+1. [Code of Conduct](#-code-of-conduct)
+2. [How Can I Contribute?](#-how-can-i-contribute)
+
+   * Reporting Bugs
+   * Suggesting Features
+   * Submitting Enhancements
+   * Improving Documentation
+3. [Development Setup](#-development-setup)
+4. [Pull Request Guidelines](#-pull-request-guidelines)
+5. [Commit Message Guidelines](#-commit-message-guidelines)
+6. [Issue Guidelines](#-issue-guidelines)
+7. [Style Guide](#-style-guide)
+8. [Community](#-community)
 
 ---
 
-## ⚙️ Getting Started
+## 📜 Code of Conduct
 
-### 1. Fork the Repository
+We follow the [Contributor Covenant](https://www.contributor-covenant.org/).
+By participating, you are expected to uphold this code.
+Please report unacceptable behavior to **project maintainers**.
 
-Click the **Fork** button on [jflatdb GitHub](https://github.com/jflatdb/jflatdb) and clone your fork:
+---
 
-```bash
-git clone https://github.com/jflatdb/jflatdb.git
-cd jflatdb
+## 💡 How Can I Contribute?
+
+### 🐞 Reporting Bugs
+
+* Use the **Bug Report Template** when opening issues.
+* Include steps to reproduce, expected vs actual behavior, logs, and screenshots if possible.
+* Check for duplicate issues before opening a new one.
+
+### ✨ Suggesting Features
+
+* Open a **Feature Request** issue.
+* Clearly describe the problem and why the feature is valuable.
+* Suggest possible implementations (if any).
+
+### 🛠 Submitting Enhancements
+
+* Identify areas of performance, reliability, or usability that can be improved.
+* Ensure changes do not break backward compatibility unless discussed.
+
+### 📖 Improving Documentation
+
+* Enhance `README.md`, `docs/`, or example scripts.
+* Fix typos, clarify explanations, and add more examples.
+
+---
+
+## 🖥 Development Setup
+
+1. Fork the repository.
+2. Clone your fork:
+
+   ```bash
+   git clone https://github.com/jflatdb/jflatdb.git
+   ```
+3. Navigate into the project:
+
+   ```bash
+   cd jflatdb
+   ```
+4. Create a new branch:
+
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```
+5. Install dependencies (if any).
+6. Run tests before submitting changes:
+
+   ```bash
+   pytest
+   ```
+
+---
+
+## 🔀 Pull Request Guidelines
+
+* Keep PRs focused and atomic (one change per PR).
+* Reference related issue numbers (e.g., `Fixes #42`).
+* Ensure all tests pass.
+* Add or update documentation if needed.
+* PR title should be descriptive and follow [Conventional Commits](https://www.conventionalcommits.org/).
+
+---
+
+## 📝 Commit Message Guidelines
+
+We follow the **Conventional Commits** format:
+
+```
+<type>(scope): short description
+
+[optional body]
+[optional footer(s)]
 ```
 
-### 2. Run Tests
-```bash
-pytest
-```
+**Examples:**
 
-## 🚀 How to Contribute
-Here are some ways you can help:
-| Contribution Type  | Description                                              |
-| ------------------ | -------------------------------------------------------- |
-| 🐞 Bug Report      | Found a bug? File a GitHub issue with reproduction steps |
-| 💡 Feature Request | Suggest an improvement or enhancement                    |
-| 📄 Documentation   | Improve docs, examples, or tutorials                     |
-| 👨‍💻 Code         | Add a new feature or fix a bug                           |
-| 🧪 Tests           | Add or improve test coverage                             |
+* `feat(query): add DISTINCT function support`
+* `fix(storage): handle empty dataset correctly`
+* `docs: update contributing guide`
 
-## 🌱 Branching & Commit Style
-### 📌 Branch Naming Convention:
-```bash
-feature/<feature-name>
-bugfix/<bug-description>
-docs/<doc-update>
-refactor/<refactor-description>
-```
+**Types:**
 
-### ✅ Commit Message Convention:
-Follow this structure:
-```bash
-type(scope): short description
-```
+* `feat`: New feature
+* `fix`: Bug fix
+* `docs`: Documentation changes
+* `style`: Code style (formatting, missing semicolons)
+* `refactor`: Code refactoring (no feature or bug fix)
+* `perf`: Performance improvement
+* `test`: Adding or fixing tests
+* `chore`: Maintenance tasks
 
-#### Examples:
-- feat(core): add insert method with filters
-- fix(utils): handle empty file on load
-- docs(readme): update usage example
+---
 
-Valid type values: feat, fix, docs, refactor, test, style, chore
-Use [Conventional Commits]() for consistency.
+## 🐛 Issue Guidelines
 
-## 🧪 Testing & Linting
-Before submitting a pull request, ensure:
+* Use the provided **issue templates** (`bug_report.md`, `feature_request.md`).
+* Provide as much context as possible.
+* If you want to work on an issue, please comment **“I’m working on this”** before sending a PR.
 
-### ✅ Tests Pass
-```bash
-pytest
-```
+---
 
-### ✅ Linting is Clean
-```bash
-flake8 jflatdb/
-```
-We recommend using [Black]() for consistent formatting.
-```bash
-black jflatdb/
-```
+## 🎨 Style Guide
 
-## 📥 Pull Request Checklist
-Before you open a pull request:
+* Follow **PEP 8** for Python code.
+* Use type hints wherever possible.
+* Keep functions small and modular.
+* Write docstrings for classes, functions, and modules.
+* Use meaningful variable and function names.
 
-- [ ] Code is clean and follows PEP8
+---
 
-- [ ] Linting passes (flake8)
+## 🌍 Community
 
-- [ ] Tests are added/updated
+* Discussions happen in GitHub Issues and Discussions.
+* Be respectful and constructive.
+* Share ideas, feedback, and improvements openly.
 
-- [ ] Code is documented with comments and docstrings
+---
 
-- [ ] Your PR is linked to a GitHub issue if relevant
+💡 **Pro Tip:** Start by checking out issues labeled `good first issue` or `help wanted`.
 
-- [ ] You followed the commit and branch naming convention
-
-
-## 📘 Contrubution Types
-| Type          | Tag         | Description                               |
-| ------------- | ----------- | ----------------------------------------- |
-| New Feature   | `feat:`     | New capability added                      |
-| Bug Fix       | `fix:`      | A bug has been fixed                      |
-| Documentation | `docs:`     | Documentation changes                     |
-| Refactor      | `refactor:` | Code restructure (no new feature/bug fix) |
-| Test          | `test:`     | Adding tests                              |
-| Chore         | `chore:`    | Maintenance tasks                         |
-| Style         | `style:`    | Code formatting, white-space, etc.        |
-
-.
-
-## 🤝 Need Help?
-If you're stuck or unsure:
-
-- [Open a GitHub Discussion]()
-- [Open an Issue]()
-
-Tag your issue with help wanted or good first issue
-
-## 🙌 Thank You
-Thanks for being awesome 💙 Your time and effort make jflatdb better for everyone.
-We welcome you to the contributor family!
-
-– The Akki Maintainers
+We’re thrilled to see your contributions.
+Thank you for making **jflatdb** better! 🙌
