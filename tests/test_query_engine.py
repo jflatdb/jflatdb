@@ -106,18 +106,22 @@ class TestMinMaxAvgFunctions:
     """Test suite for QueryEngine min(), max(), and avg() methods"""
 
     def test_min_normal(self):
+        """Test min with normal numeric data."""
         engine = QueryEngine([{"val": 10}, {"val": 5}, {"val": 20}])
         assert engine.min("val") == 5
 
     def test_max_normal(self):
+        """Test max with normal numeric data."""
         engine = QueryEngine([{"val": 10}, {"val": 5}, {"val": 20}])
         assert engine.max("val") == 20
 
     def test_avg_normal(self):
+        """Test avg with normal numeric data."""
         engine = QueryEngine([{"val": 10}, {"val": 5}, {"val": 15}])
         assert engine.avg("val") == 10
 
     def test_empty_dataset_raises_error(self):
+        """Test that min, max, and avg raise QueryError for empty datasets."""
         engine = QueryEngine([])
         with pytest.raises(QueryError, match="Cannot compute min for column: val"):
             engine.min("val")
@@ -127,6 +131,7 @@ class TestMinMaxAvgFunctions:
             engine.avg("val")
 
     def test_no_numeric_values_raises_error(self):
+        """Test that min, max, and avg raise QueryError if no numeric values are found."""
         engine = QueryEngine([{"val": "a"}, {"val": "b"}])
         with pytest.raises(QueryError):
             engine.min("val")
@@ -136,6 +141,7 @@ class TestMinMaxAvgFunctions:
             engine.avg("val")
 
     def test_mixed_values(self):
+        """Test that min, max, and avg correctly handle mixed numeric and non-numeric data."""
         engine = QueryEngine([{"val": 10}, {"val": "a"}, {"val": 20}])
         assert engine.min("val") == 10
         assert engine.max("val") == 20
@@ -146,15 +152,18 @@ class TestCountFunction:
     """Test suite for QueryEngine.count() method"""
 
     def test_count_empty_dataset(self):
+        """Test count returns 0 for an empty dataset."""
         engine = QueryEngine([])
         assert engine.count() == 0
         assert engine.count("any_column") == 0
 
     def test_count_all(self):
+        """Test count without a column counts all rows."""
         engine = QueryEngine([{"a": 1}, {"a": 2}, {}])
         assert engine.count() == 3
 
     def test_count_column(self):
+        """Test count with a column counts only non-null values in that column."""
         engine = QueryEngine([{"a": 1}, {"a": None}, {"b": 3}])
         assert engine.count("a") == 1
 
@@ -163,10 +172,12 @@ class TestBetweenFunction:
     """Test suite for QueryEngine.between() method"""
 
     def test_between_empty_dataset(self):
+        """Test between returns an empty list for an empty dataset."""
         engine = QueryEngine([])
         assert engine.between("age", 18, 30) == []
 
     def test_between_normal(self):
+        """Test between with a normal dataset."""
         engine = QueryEngine([
             {"age": 25},
             {"age": 17},
@@ -180,10 +191,12 @@ class TestGroupByFunction:
     """Test suite for QueryEngine.group_by() method"""
 
     def test_group_by_empty_dataset(self):
+        """Test group_by returns an empty dictionary for an empty dataset."""
         engine = QueryEngine([])
         assert engine.group_by("category") == {}
 
     def test_group_by_normal(self):
+        """Test group_by with a normal dataset."""
         engine = QueryEngine([
             {"category": "A", "value": 1},
             {"category": "B", "value": 2},
