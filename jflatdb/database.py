@@ -10,6 +10,7 @@ from .security import Security
 from .indexer import Indexer
 from .query_engine import QueryEngine
 from .query_cache import QueryCache
+from .transaction import Transaction
 from .utils.logger import Logger
 
 
@@ -22,6 +23,15 @@ class Database:
         self.security = Security(password)
         self.indexer = Indexer()
         self.cache = QueryCache(max_size=cache_size, enabled=cache_enabled)
+
+        # Perform WAL recovery if needed
+        if self.storage.has_wal():
+            self.logger.warn("Incomplete transaction detected, recovering from WAL")
+            if self.storage.recover_from_wal():
+                self.logger.info("WAL recovery successful")
+            else:
+                self.logger.error("WAL recovery failed")
+
         self.data = self.load()
         self.query_engine = QueryEngine(self.data)
         self.logger.info("Database initialized")  # test logger
@@ -73,7 +83,7 @@ class Database:
             return cached_result
 
         # Cache miss - execute query
-        result = self.indexer.query(self.data, query)
+        result = self.indexer.query(query)
 
         # Store in cache
         self.cache.set(query, result)
@@ -133,3 +143,19 @@ class Database:
     def disable_cache(self):
         """Disable query caching"""
         self.cache.disable()
+
+    # ----------- TRANSACTION SUPPORT ------------
+    def transaction(self):
+        """
+        Create a new transaction context.
+
+        Returns:
+            Transaction: A new transaction instance
+
+        Example:
+            with db.transaction() as txn:
+                txn.insert({"id": 1, "name": "Alice"})
+                txn.insert({"id": 2, "name": "Bob"})
+                # Both inserts committed atomically
+        """
+        return Transaction(self)
