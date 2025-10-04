@@ -78,7 +78,9 @@ Calculates the average (mean) of numeric values in a column.
 
 **Returns:**
 - `float`: Average of numeric values
-- `None`: If no numeric values found or empty dataset
+
+**Raises:**
+- `QueryError`: If the dataset is empty or the column contains no numeric values.
 
 **Examples:**
 
@@ -87,9 +89,13 @@ Calculates the average (mean) of numeric values in a column.
 avg_salary = engine.avg("salary")
 # Output: 3250.0
 
-# No numeric values
-result = engine.avg("name")
-# Output: None
+# Raises QueryError on empty or non-numeric data
+empty_engine = QueryEngine([])
+try:
+    empty_engine.avg("salary")
+except QueryError as e:
+    print(e)
+    # Output: Cannot compute avg for column: salary (empty dataset or no numeric values)
 ```
 
 ---
@@ -103,7 +109,9 @@ Finds the minimum value in a column.
 
 **Returns:**
 - `int` or `float`: Minimum numeric value
-- `None`: If no numeric values found or empty dataset
+
+**Raises:**
+- `QueryError`: If the dataset is empty or the column contains no numeric values.
 
 **Examples:**
 
@@ -124,7 +132,9 @@ Finds the maximum value in a column.
 
 **Returns:**
 - `int` or `float`: Maximum numeric value
-- `None`: If no numeric values found or empty dataset
+
+**Raises:**
+- `QueryError`: If the dataset is empty or the column contains no numeric values.
 
 **Examples:**
 
@@ -265,6 +275,108 @@ engine2.distinct("v", include_none=True, sort=True)
 
 ---
 
+## String Functions
+
+### `upper(column)`
+
+Converts all string values in a column to uppercase.
+
+**Parameters:**
+- `column` (str): The column name.
+
+**Returns:**
+- `list`: A list of uppercase strings. Non-string values are replaced with `None`.
+
+**Example:**
+```python
+data = [{'name': 'Akki'}, {'name': 'Sam'}, {'name': 'neha'}]
+db = QueryEngine(data)
+print(db.upper("name"))
+# ["AKKI", "SAM", "NEHA"]
+```
+
+---
+
+### `lower(column)`
+
+Converts all string values in a column to lowercase.
+
+**Parameters:**
+- `column` (str): The column name.
+
+**Returns:**
+- `list`: A list of lowercase strings. Non-string values are replaced with `None`.
+
+**Example:**
+```python
+data = [{'city': 'Delhi'}, {'city': 'MUMBAI'}, {'city': 'Pune'}]
+db = QueryEngine(data)
+print(db.lower("city"))
+# ["delhi", "mumbai", "pune"]
+```
+
+---
+
+### `length(column)`
+
+Returns the length of string values in a column.
+
+**Parameters:**
+- `column` (str): The column name.
+
+**Returns:**
+- `list`: A list of integer lengths. Non-string values are replaced with `None`.
+
+**Example:**
+```python
+data = [{'description': 'A nice person.'}, {'description': 'Another one.'}]
+db = QueryEngine(data)
+print(db.length("description"))
+# [14, 12]
+```
+
+---
+
+### `concat(*columns)`
+
+Combines multiple string columns into one.
+
+**Parameters:**
+- `*columns` (str): One or more column names.
+
+**Returns:**
+- `list`: A list of concatenated strings.
+
+**Example:**
+```python
+data = [{'first_name': 'Akki', 'last_name': 'Kumar'}, {'first_name': 'Sam', 'last_name': 'Gupta'}]
+db = QueryEngine(data)
+print(db.concat("first_name", "last_name"))
+# ["AkkiKumar", "SamGupta"]
+```
+
+---
+
+### `trim(column)`
+
+Removes leading and trailing spaces from string values.
+
+**Parameters:**
+- `column` (str): The column name.
+
+**Returns:**
+- `list`: A list of trimmed strings. Non-string values are replaced with `None`.
+
+**Example:**
+```python
+data = [{'address': '  New Delhi  '}, {'address': 'Mumbai'}]
+db = QueryEngine(data)
+print(db.trim("address"))
+# ["New Delhi", "Mumbai"]
+```
+
+---
+
 ## Combining Operations
 
 QueryEngine operations can be combined for complex analysis:
@@ -291,23 +403,22 @@ total = high_earner_engine.sum("salary")
 
 ## Error Handling
 
-QueryEngine methods handle edge cases gracefully:
+The QueryEngine is designed to provide clear and predictable behavior, especially with empty or invalid data.
 
+- **`sum()`**: Returns `0` for empty datasets or columns with no numeric values.
+- **`count()`**: Returns `0` for empty datasets.
+- **`between()` / `group_by()`**: Return `[]` or `{}` respectively for empty datasets.
+- **`min()` / `max()` / `avg()`**: Raise a `QueryError` if the dataset is empty or the target column contains no numeric values. This ensures that calculations are not performed on empty sets, preventing ambiguous results like `None` or `0`.
+
+**Example of `QueryError`:**
 ```python
-# Non-existent column
-result = engine.sum("nonexistent")
-# Output: 0
-
 # Empty dataset
-empty = QueryEngine([])
-result = empty.avg("salary")
-# Output: None
-
-# All non-numeric values
-text_data = [{"name": "Alice"}, {"name": "Bob"}]
-engine = QueryEngine(text_data)
-result = engine.sum("name")
-# Output: 0
+empty_engine = QueryEngine([])
+try:
+    result = empty_engine.avg("salary")
+except QueryError as e:
+    print(e)
+    # Output: Cannot compute avg for column: salary (empty dataset or no numeric values)
 ```
 
 ---

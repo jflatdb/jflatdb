@@ -1,4 +1,6 @@
 from jflatdb.query_engine import QueryEngine
+import pytest
+from jflatdb.exceptions.errors import QueryError
 
 
 class TestSumFunction:
@@ -98,3 +100,97 @@ class TestSumFunction:
             {"id": 1, "amount": 42},
         ])
         assert engine.sum("amount") == 42
+
+
+class TestMinMaxAvgFunctions:
+    """Test suite for QueryEngine min(), max(), and avg() methods"""
+
+    def test_min_normal(self):
+        engine = QueryEngine([{"val": 10}, {"val": 5}, {"val": 20}])
+        assert engine.min("val") == 5
+
+    def test_max_normal(self):
+        engine = QueryEngine([{"val": 10}, {"val": 5}, {"val": 20}])
+        assert engine.max("val") == 20
+
+    def test_avg_normal(self):
+        engine = QueryEngine([{"val": 10}, {"val": 5}, {"val": 15}])
+        assert engine.avg("val") == 10
+
+    def test_empty_dataset_raises_error(self):
+        engine = QueryEngine([])
+        with pytest.raises(QueryError, match="Cannot compute min for column: val"):
+            engine.min("val")
+        with pytest.raises(QueryError, match="Cannot compute max for column: val"):
+            engine.max("val")
+        with pytest.raises(QueryError, match="Cannot compute avg for column: val"):
+            engine.avg("val")
+
+    def test_no_numeric_values_raises_error(self):
+        engine = QueryEngine([{"val": "a"}, {"val": "b"}])
+        with pytest.raises(QueryError):
+            engine.min("val")
+        with pytest.raises(QueryError):
+            engine.max("val")
+        with pytest.raises(QueryError):
+            engine.avg("val")
+
+    def test_mixed_values(self):
+        engine = QueryEngine([{"val": 10}, {"val": "a"}, {"val": 20}])
+        assert engine.min("val") == 10
+        assert engine.max("val") == 20
+        assert engine.avg("val") == 15
+
+
+class TestCountFunction:
+    """Test suite for QueryEngine.count() method"""
+
+    def test_count_empty_dataset(self):
+        engine = QueryEngine([])
+        assert engine.count() == 0
+        assert engine.count("any_column") == 0
+
+    def test_count_all(self):
+        engine = QueryEngine([{"a": 1}, {"a": 2}, {}])
+        assert engine.count() == 3
+
+    def test_count_column(self):
+        engine = QueryEngine([{"a": 1}, {"a": None}, {"b": 3}])
+        assert engine.count("a") == 1
+
+
+class TestBetweenFunction:
+    """Test suite for QueryEngine.between() method"""
+
+    def test_between_empty_dataset(self):
+        engine = QueryEngine([])
+        assert engine.between("age", 18, 30) == []
+
+    def test_between_normal(self):
+        engine = QueryEngine([
+            {"age": 25},
+            {"age": 17},
+            {"age": 35},
+            {"age": 30}
+        ])
+        assert engine.between("age", 18, 30) == [{"age": 25}, {"age": 30}]
+
+
+class TestGroupByFunction:
+    """Test suite for QueryEngine.group_by() method"""
+
+    def test_group_by_empty_dataset(self):
+        engine = QueryEngine([])
+        assert engine.group_by("category") == {}
+
+    def test_group_by_normal(self):
+        engine = QueryEngine([
+            {"category": "A", "value": 1},
+            {"category": "B", "value": 2},
+            {"category": "A", "value": 3},
+        ])
+        expected = {
+            "A": [{"category": "A", "value": 1}, {"category": "A", "value": 3}],
+            "B": [{"category": "B", "value": 2}]
+        }
+        assert engine.group_by("category") == expected
