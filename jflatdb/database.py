@@ -3,6 +3,7 @@ Main JSONDatabase class
 """
 
 import os
+import copy
 
 from .storage import Storage
 from .schema import Schema
@@ -172,11 +173,14 @@ class Database:
     # ----------- SCHEMA MIGRATION SUPPORT ------------
     def migrate_schema(self, migration_callback, migration_name=''):
         """
-        Perform schema migration using callback function.
+        Perform schema migration using callback function with automatic rollback on failure.
 
         Args:
             migration_callback: Function that takes SchemaMigration instance
             migration_name: Optional description of the migration
+
+        Raises:
+            Exception: Re-raises any exception from migration after rollback
 
         Example:
             def add_timestamps(migration):
@@ -187,25 +191,43 @@ class Database:
         """
         self.logger.info(f"Starting schema migration: {migration_name}")
 
-        # Create migration instance with current data
-        migration = SchemaMigration(self.data)
+        # Create deep copy backup before migration
+        backup_data = copy.deepcopy(self.data)
+        self.logger.info("Created backup of current data")
 
-        # Execute migration callback
-        migration_callback(migration)
+        try:
+            # Create migration instance with current data
+            migration = SchemaMigration(self.data)
 
-        # Get migrated data
-        self.data = migration.get_data()
+            # Execute migration callback
+            migration_callback(migration)
 
-        # Increment schema version
-        self.schema_version.increment_version(migration_name)
+            # Get migrated data
+            self.data = migration.get_data()
 
-        # Invalidate cache and save
-        self.cache.invalidate()
-        self.save()
+            # Increment schema version
+            self.schema_version.increment_version(migration_name)
 
-        self.logger.info(
-            f"Migration complete. Schema version: {self.schema_version.get_version()}"
-        )
+            # Invalidate cache and save
+            self.cache.invalidate()
+            self.save()
+
+            self.logger.info(
+                f"Migration complete. Schema version: {self.schema_version.get_version()}"
+            )
+
+        except Exception as e:
+            # Rollback on failure
+            self.logger.error(f"Migration failed: {e}")
+            self.logger.warn("Rolling back to previous state")
+
+            # Restore from backup
+            self.data = backup_data
+            self.cache.invalidate()
+            self.save()
+
+            self.logger.info("Rollback complete, database restored to previous state")
+            raise
 
     def get_schema_version(self):
         """Get current schema version number"""

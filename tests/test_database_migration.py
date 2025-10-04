@@ -247,3 +247,185 @@ class TestDatabaseMigration:
         assert db.data[0]["email"] == "unknown@example.com"
         assert db.data[0]["status"] == "active"
         assert db.get_schema_version() == 3
+
+
+class TestMigrationRollback:
+    """Test migration rollback and error recovery"""
+
+    def test_rollback_on_migration_error(self, tmp_path, monkeypatch):
+        """Test automatic rollback when migration fails"""
+        _patch_storage_init_to_tmp(tmp_path, monkeypatch)
+
+        db = Database('test.json', password='test')
+        db.insert({"id": 1, "name": "Alice"})
+        db.insert({"id": 2, "name": "Bob"})
+
+        original_data = [{"id": 1, "name": "Alice"}, {"id": 2, "name": "Bob"}]
+        original_version = db.get_schema_version()
+
+        # Migration that will fail
+        def failing_migration(m):
+            m.add_field("status", "active")
+            raise RuntimeError("Simulated migration error")
+
+        # Attempt migration and catch error
+        try:
+            db.migrate_schema(failing_migration, "Failing migration")
+            assert False, "Should have raised RuntimeError"
+        except RuntimeError as e:
+            assert "Simulated migration error" in str(e)
+
+        # Verify rollback: data restored
+        assert len(db.data) == 2
+        assert db.data[0] == original_data[0]
+        assert db.data[1] == original_data[1]
+        assert "status" not in db.data[0]
+
+        # Verify version not incremented
+        assert db.get_schema_version() == original_version
+
+    def test_rollback_on_rename_conflict(self, tmp_path, monkeypatch):
+        """Test rollback when rename causes conflict"""
+        _patch_storage_init_to_tmp(tmp_path, monkeypatch)
+
+        db = Database('test.json', password='test')
+        db.insert({"id": 1, "name": "Alice", "fullname": "Alice Smith"})
+
+        original_version = db.get_schema_version()
+
+        # Migration that will fail due to rename conflict
+        def conflict_migration(m):
+            m.rename_field("name", "fullname")  # fullname already exists
+
+        try:
+            db.migrate_schema(conflict_migration, "Conflicting rename")
+            assert False, "Should have raised MigrationError"
+        except Exception:
+            pass
+
+        # Verify rollback: both fields still exist
+        assert "name" in db.data[0]
+        assert "fullname" in db.data[0]
+        assert db.get_schema_version() == original_version
+
+    def test_partial_migration_rollback(self, tmp_path, monkeypatch):
+        """Test rollback undoes all changes even if some operations succeeded"""
+        _patch_storage_init_to_tmp(tmp_path, monkeypatch)
+
+        db = Database('test.json', password='test')
+        db.insert({"id": 1, "name": "Alice"})
+
+        def partial_migration(m):
+            m.add_field("email", "test@example.com")  # This succeeds
+            m.add_field("status", "active")  # This succeeds
+            m.rename_field("name", "email")  # This fails (email exists)
+
+        try:
+            db.migrate_schema(partial_migration, "Partial migration")
+        except Exception:
+            pass
+
+        # Verify all changes rolled back
+        assert "email" not in db.data[0]
+        assert "status" not in db.data[0]
+        assert "name" in db.data[0]
+        assert db.get_schema_version() == 0
+
+    def test_rollback_persists_to_disk(self, tmp_path, monkeypatch):
+        """Test rollback saves restored state to disk"""
+        _patch_storage_init_to_tmp(tmp_path, monkeypatch)
+
+        db1 = Database('test.json', password='test')
+        db1.insert({"id": 1, "name": "Alice"})
+
+        def failing_migration(m):
+            m.add_field("status", "active")
+            raise ValueError("Migration failed")
+
+        try:
+            db1.migrate_schema(failing_migration, "Failing migration")
+        except ValueError:
+            pass
+
+        # Reload database
+        db2 = Database('test.json', password='test')
+
+        # Verify rolled back state persisted
+        assert len(db2.data) == 1
+        assert "status" not in db2.data[0]
+        assert db2.data[0]["name"] == "Alice"
+
+    def test_successful_migration_after_rollback(self, tmp_path, monkeypatch):
+        """Test successful migration can be performed after a failed one"""
+        _patch_storage_init_to_tmp(tmp_path, monkeypatch)
+
+        db = Database('test.json', password='test')
+        db.insert({"id": 1, "name": "Alice"})
+
+        # First migration fails
+        def failing_migration(m):
+            m.add_field("status", "active")
+            raise RuntimeError("Failed")
+
+        try:
+            db.migrate_schema(failing_migration, "Failed migration")
+        except RuntimeError:
+            pass
+
+        # Second migration succeeds
+        def successful_migration(m):
+            m.add_field("email", "alice@example.com")
+
+        db.migrate_schema(successful_migration, "Successful migration")
+
+        # Verify only successful migration applied
+        assert "status" not in db.data[0]
+        assert db.data[0]["email"] == "alice@example.com"
+        assert db.get_schema_version() == 1
+
+    def test_rollback_with_empty_database(self, tmp_path, monkeypatch):
+        """Test rollback works with empty database"""
+        _patch_storage_init_to_tmp(tmp_path, monkeypatch)
+
+        db = Database('test.json', password='test')
+
+        def failing_migration(m):
+            raise ValueError("Migration error")
+
+        try:
+            db.migrate_schema(failing_migration, "Empty db migration")
+        except ValueError:
+            pass
+
+        # Verify database still empty
+        assert len(db.data) == 0
+        assert db.get_schema_version() == 0
+
+    def test_rollback_preserves_original_data(self, tmp_path, monkeypatch):
+        """Test rollback creates proper deep copy"""
+        _patch_storage_init_to_tmp(tmp_path, monkeypatch)
+
+        db = Database('test.json', password='test')
+        db.insert({"id": 1, "name": "Alice", "age": 25})
+        db.insert({"id": 2, "name": "Bob", "age": 30})
+
+        original_data = [
+            {"id": 1, "name": "Alice", "age": 25},
+            {"id": 2, "name": "Bob", "age": 30}
+        ]
+
+        def failing_migration(m):
+            # This modifies the data
+            m.add_field("count", "ZERO()")
+            m.add_field("status", "active")
+            raise RuntimeError("Fail")
+
+        try:
+            db.migrate_schema(failing_migration, "Test")
+        except RuntimeError:
+            pass
+
+        # Verify original data preserved
+        assert db.data == original_data
+        assert "count" not in db.data[0]
+        assert "status" not in db.data[0]
