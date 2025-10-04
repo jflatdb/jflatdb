@@ -3,6 +3,7 @@ Main JSONDatabase class
 """
 
 import os
+import copy
 
 from .storage import Storage
 from .schema import Schema
@@ -11,6 +12,8 @@ from .indexer import Indexer
 from .query_engine import QueryEngine
 from .query_cache import QueryCache
 from .transaction import Transaction
+from .schema_migration import SchemaMigration
+from .schema_version import SchemaVersion
 from .utils.logger import Logger
 
 
@@ -23,6 +26,13 @@ class Database:
         self.security = Security(password)
         self.indexer = Indexer()
         self.cache = QueryCache(max_size=cache_size, enabled=cache_enabled)
+
+        # Initialize schema version tracking
+        db_name = os.path.splitext(os.path.basename(path))[0]
+        self.schema_version = SchemaVersion(
+            storage_folder=self.storage.folder,
+            db_name=f'{db_name}_schema'
+        )
 
         # Perform WAL recovery if needed
         if self.storage.has_wal():
@@ -159,3 +169,70 @@ class Database:
                 # Both inserts committed atomically
         """
         return Transaction(self)
+
+    # ----------- SCHEMA MIGRATION SUPPORT ------------
+    def migrate_schema(self, migration_callback, migration_name=''):
+        """
+        Perform schema migration using callback function with automatic rollback on failure.
+
+        Args:
+            migration_callback: Function that takes SchemaMigration instance
+            migration_name: Optional description of the migration
+
+        Raises:
+            Exception: Re-raises any exception from migration after rollback
+
+        Example:
+            def add_timestamps(migration):
+                migration.add_field('created_at', 'NOW()')
+                migration.add_field('updated_at', 'NOW()')
+
+            db.migrate_schema(add_timestamps, 'Add timestamp fields')
+        """
+        self.logger.info(f"Starting schema migration: {migration_name}")
+
+        # Create deep copy backup before migration
+        backup_data = copy.deepcopy(self.data)
+        self.logger.info("Created backup of current data")
+
+        try:
+            # Create migration instance with current data
+            migration = SchemaMigration(self.data)
+
+            # Execute migration callback
+            migration_callback(migration)
+
+            # Get migrated data
+            self.data = migration.get_data()
+
+            # Increment schema version
+            self.schema_version.increment_version(migration_name)
+
+            # Invalidate cache and save
+            self.cache.invalidate()
+            self.save()
+
+            self.logger.info(
+                f"Migration complete. Schema version: {self.schema_version.get_version()}"
+            )
+
+        except Exception as e:
+            # Rollback on failure
+            self.logger.error(f"Migration failed: {e}")
+            self.logger.warn("Rolling back to previous state")
+
+            # Restore from backup
+            self.data = backup_data
+            self.cache.invalidate()
+            self.save()
+
+            self.logger.info("Rollback complete, database restored to previous state")
+            raise
+
+    def get_schema_version(self):
+        """Get current schema version number"""
+        return self.schema_version.get_version()
+
+    def get_migration_history(self):
+        """Get full migration history"""
+        return self.schema_version.get_migration_history()
