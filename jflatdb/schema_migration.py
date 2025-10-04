@@ -77,7 +77,8 @@ class SchemaMigration:
 
         Args:
             field_name: Name of the field to add
-            default_value: Default value for the new field (supports special keywords)
+            default_value: Default value for the new field
+                (supports special keywords)
 
         Raises:
             MigrationError: If field already exists in some records
@@ -85,15 +86,24 @@ class SchemaMigration:
         if not field_name:
             raise MigrationError("Field name cannot be empty")
 
-        self.logger.info(f"Migration: Adding field '{field_name}' with default '{default_value}'")
+        self.logger.info(
+            f"Migration: Adding field '{field_name}' "
+            f"with default '{default_value}'"
+        )
 
         for record in self.data:
             if field_name in record:
-                self.logger.warn(f"Field '{field_name}' already exists in some records, skipping those")
+                self.logger.warn(
+                    f"Field '{field_name}' already exists in some "
+                    f"records, skipping those"
+                )
                 continue
             record[field_name] = self._resolve_default_value(default_value)
 
-        self.logger.info(f"Migration: Added field '{field_name}' to {len(self.data)} records")
+        self.logger.info(
+            f"Migration: Added field '{field_name}' to "
+            f"{len(self.data)} records"
+        )
 
     def remove_field(self, field_name: str):
         """
@@ -116,7 +126,10 @@ class SchemaMigration:
                 del record[field_name]
                 removed_count += 1
 
-        self.logger.info(f"Migration: Removed field '{field_name}' from {removed_count} records")
+        self.logger.info(
+            f"Migration: Removed field '{field_name}' from "
+            f"{removed_count} records"
+        )
 
     def rename_field(self, old_name: str, new_name: str):
         """
@@ -135,7 +148,9 @@ class SchemaMigration:
         if old_name == new_name:
             raise MigrationError("Old and new field names must be different")
 
-        self.logger.info(f"Migration: Renaming field '{old_name}' to '{new_name}'")
+        self.logger.info(
+            f"Migration: Renaming field '{old_name}' to '{new_name}'"
+        )
 
         renamed_count = 0
         for record in self.data:
@@ -148,7 +163,9 @@ class SchemaMigration:
                 record[new_name] = record.pop(old_name)
                 renamed_count += 1
 
-        self.logger.info(f"Migration: Renamed field in {renamed_count} records")
+        self.logger.info(
+            f"Migration: Renamed field in {renamed_count} records"
+        )
 
     def set_default(self, field_name: str, default_value=None):
         """
@@ -166,7 +183,10 @@ class SchemaMigration:
         if not field_name:
             raise MigrationError("Field name cannot be empty")
 
-        self.logger.info(f"Migration: Setting default for field '{field_name}' to '{default_value}'")
+        self.logger.info(
+            f"Migration: Setting default for field '{field_name}' "
+            f"to '{default_value}'"
+        )
 
         updated_count = 0
         for record in self.data:
@@ -174,7 +194,10 @@ class SchemaMigration:
                 record[field_name] = self._resolve_default_value(default_value)
                 updated_count += 1
 
-        self.logger.info(f"Migration: Set default for '{field_name}' in {updated_count} records")
+        self.logger.info(
+            f"Migration: Set default for '{field_name}' in "
+            f"{updated_count} records"
+        )
 
     def get_data(self):
         """

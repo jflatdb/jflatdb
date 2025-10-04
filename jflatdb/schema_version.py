@@ -71,7 +71,8 @@ class SchemaVersion:
     def _save_metadata(self):
         """Save metadata to file"""
         self._save_metadata_internal(self._metadata)
-        self.logger.info(f"Schema metadata saved (version: {self._metadata['version']})")
+        version = self._metadata['version']
+        self.logger.info(f"Schema metadata saved (version: {version})")
 
     def get_version(self):
         """
@@ -104,7 +105,9 @@ class SchemaVersion:
         self._metadata['migrations'].append(migration_record)
 
         self._save_metadata()
-        self.logger.info(f"Schema version updated: {old_version} -> {new_version}")
+        self.logger.info(
+            f"Schema version updated: {old_version} -> {new_version}"
+        )
 
     def get_migration_history(self):
         """
@@ -128,7 +131,8 @@ class SchemaVersion:
         """
         Reset version to 0 and clear history.
 
-        WARNING: This should only be used for testing or complete schema resets.
+        WARNING: This should only be used for testing or complete
+        schema resets.
         """
         self._metadata = self._init_metadata()
         self._save_metadata()
