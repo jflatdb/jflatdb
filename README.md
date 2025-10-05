@@ -10,6 +10,10 @@
 ![Contributors](https://img.shields.io/github/contributors/jflatdb/jflatdb)
 ![Issues](https://img.shields.io/github/issues/jflatdb/jflatdb)
 ![Stars](https://img.shields.io/github/stars/jflatdb/jflatdb)
+[![Downloads](https://img.shields.io/pypi/dm/jflatdb)](https://pypi.org/project/jflatdb/)
+[![License](https://img.shields.io/github/license/jflatdb/jflatdb)](https://github.com/jflatdb/jflatdb/blob/main/LICENSE)
+[![Hacktoberfest](https://img.shields.io/badge/Hacktoberfest-2025-blueviolet)](https://hacktoberfest.com/)
+
 
 ---
 
