@@ -86,8 +86,9 @@ jflatdb/
 
 ## 🎉 Contributors Leaderboard
 
-<!-- CONTRIBUTORS-LEADERBOARD:START -->
-<!-- CONTRIBUTORS-LEADERBOARD:END -->
+<!-- readme: contributors -start -->
+<!-- readme: contributors -end -->
+
 
 
 ## 🤝 Contributing
