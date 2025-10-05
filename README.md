@@ -4,7 +4,8 @@
 
 # jflatdb
 
-**jflatdb** is a lightweight, Python-based flat-file database framework designed for fast, simple, and file-based data storage without the need for a server or SQL engine. Ideal for developers building CLI tools, microservices, or offline applications.
+🚀 **jflatdb** is a lightweight, file-based **JSON database system** designed for developers who want the simplicity of NoSQL with **query features inspired by SQL**.  
+No servers, no external dependencies — just **plug-and-play storage** with indexing, queries, and persistence.
 
 ![License](https://img.shields.io/github/license/jflatdb/jflatdb)
 ![Contributors](https://img.shields.io/github/contributors/jflatdb/jflatdb)
