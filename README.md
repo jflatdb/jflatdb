@@ -19,11 +19,11 @@
 
 ## 🚀 Features
 
-- 📁 Flat-file, schema-free database
-- 🧪 Easy read/write/query interface
-- 📦 No server or setup needed
-- 🔐 Human-readable, JSON-style structure
-- 🧩 Modular and extensible
+- 📦 **JSON-powered storage** – human-readable, lightweight, and portable
+- ⚡ **Fast querying with indexes** – supports filters, conditions, and sorting
+- 📑 **Built-in functions** – string, date/time, and aggregation functions
+- 🔒 **Security & validation** – encryption, constraints, and safe writes
+- 🛠 **Zero setup** – no database server needed, runs in pure Python
 
 ---
 
