@@ -84,6 +84,12 @@ jflatdb/
 └── LICENSE
 ```
 
+## 🎉 Contributors Leaderboard
+
+<!-- CONTRIBUTORS-LEADERBOARD:START -->
+<!-- CONTRIBUTORS-LEADERBOARD:END -->
+
+
 ## 🤝 Contributing
 We welcome contributions from the community!
 
