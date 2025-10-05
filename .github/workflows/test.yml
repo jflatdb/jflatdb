@@ -1,3 +1,6 @@
+# Jobs: lint -> test -> build
+# Each job runs automatically on every push and pull request.
+
 name: Run Tests
 
 on:
@@ -5,29 +8,100 @@ on:
   pull_request:
 
 concurrency:
+  # Prevent overlapping runs on the same branch/ref
   group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: false
+  cancel-in-progress: false  # Set true to auto-cancel old runs on new commits
 
 jobs:
+  lint:
+    # Check code formatting and lint for style issues
+    name: Lint & Format
+    runs-on: ubuntu-latest
+    steps:
+      # Fetch repository content
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Install Python 3.11 for consistency across tools
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      # Install and upgrade required linting tools
+      - name: Install linting dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install black ruff
+
+      # Verify code formatting without modifying files
+      - name: Check formatting
+        run: black . --check
+
+      # Run static analysis for style and errors
+      - name: Run linting
+        run: ruff check .
+
   test:
+    # Run unit tests after successful linting
+    name: Run Tests
+    needs: lint
     runs-on: ubuntu-latest
     strategy:
+      # Test across multiple Python versions
       matrix:
-        python-version: [3.9, 3.10.11, 3.11, 3.12]
+        python-version: ["3.9", "3.10", "3.11", "3.12"]
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v5
-      with:
-        python-version: ${{ matrix.python-version }}
+      # Set up Python environment for each version in matrix
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
 
-    - name: Install dependencies
-      run: |
-        pip install pytest
-        pip install -e .
+      # Install project and test dependencies
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest
+          pip install -e .
 
-    - name: Run tests
-      run: python3 -m pytest
+      # Execute all tests and show results
+      - name: Run tests
+        run: pytest
+
+  build:
+    # Verify that the package can be built successfully
+    name: Build distribution
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Use Python 3.11 for building the distribution
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      # Install tools needed for packaging
+      - name: Install build tooling
+        run: |
+          python -m pip install --upgrade pip
+          pip install build
+
+      # Build source and wheel distributions into the dist/ folder
+      - name: Build package
+        run: python -m build
+
+      # Upload build artifacts for inspection or deployment
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist-${{ github.sha }}
+          path: dist/*
+          if-no-files-found: error
