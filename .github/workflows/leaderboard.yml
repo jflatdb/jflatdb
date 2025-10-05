@@ -15,10 +15,12 @@ jobs:
       - name: Generate Leaderboard
         uses: akhilmhdh/contributors-readme-action@v2.3
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          README_PATH: README.md
-          CONTRIBUTORS: 10
-          COLUMN_PER_ROW: 5
+          token: ${{ secrets.GITHUB_TOKEN }}
+          readme_path: README.md
+          columns_per_row: 5
+          image_size: 100
+          collaborators: all
+          commit_message: "⚡ Auto-update contributors leaderboard"
 
       - name: Commit & Push Changes
         run: |
