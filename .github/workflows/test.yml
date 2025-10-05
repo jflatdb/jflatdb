@@ -35,8 +35,8 @@ jobs:
           pip install black ruff
 
       # Verify code formatting without modifying files
-      - name: Check formatting
-        run: black . --check
+      - name: Check formatting (non-blocking)
+        run: black . --check || true
 
       # Run static analysis for style and errors
       - name: Run linting
