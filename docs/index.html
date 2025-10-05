@@ -3,36 +3,289 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JFlatDB | Docs</title>
+  <title>jflatdb - Lightweight Python Flat-File Database</title>
   <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
-<!-- Header -->
-<div class="header">
-  <div class="left">
-    <div class="logo">
-        <img src="./assets/img/logo.png">
+  <!-- Sidebar Navigation -->
+  <nav class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html" class="logo-link" title="Go to home">
+        <img src="./assets/img/logo.png" alt="jflatdb logo" class="logo">
+      </a>
     </div>
-  </div>
-  <div class="center">
-    <div class="links">
-        <a href="">Guide</a>
-        <a href="">Install</a>
-        <a href="">Contact</a>
+    
+    <ul class="nav-links">
+      <li><a href="#introduction" class="nav-link active">Introduction</a></li>
+      <li><a href="#installation" class="nav-link">Installation</a></li>
+      <li><a href="#quick-start" class="nav-link">Quick Start</a></li>
+      <li><a href="#contribution" class="nav-link">Contribution Guide</a></li>
+      <li><a href="#contributors" class="nav-link">Special Thanks</a></li>
+      <li><a href="#sponsors" class="nav-link">Sponsors</a></li>
+    </ul>
+  </nav>
+
+  <!-- Mobile menu toggle button -->
+  <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <!-- Main Content Area -->
+  <main class="content">
+    <div class="container">
+      
+      <!-- Introduction Section -->
+      <section id="introduction" class="section">
+        <h2>Introduction</h2>
+        <p>
+          <a href="https://github.com/jflatdb/jflatdb" target="_blank" class="project-link"><strong>jflatdb</strong></a> is a lightweight, Python-based flat-file database framework designed for fast, 
+          simple, and file-based data storage without the need for a server or SQL engine. It's ideal for developers 
+          building CLI tools, microservices, or offline applications that need persistent storage without the overhead 
+          of traditional database systems.
+        </p>
+        <p>
+          Built entirely in Python, jflatdb provides a familiar, SQL-like interface for querying JSON data stored in 
+          flat files. It offers features like indexing, caching, transactions, and schema migrations—all while maintaining 
+          simplicity and ease of use.
+        </p>
+      </section>
+
+      <!-- Installation Section -->
+      <section id="installation" class="section">
+        <h2>Installation</h2>
+        
+        <h3>From PyPI</h3>
+        <p>Install the latest stable version using pip:</p>
+        <pre><code>pip install jflatdb</code></pre>
+
+        <h3>From Source</h3>
+        <p>Clone the repository and install locally:</p>
+        <pre><code>git clone https://github.com/jflatdb/jflatdb.git
+cd jflatdb
+pip install .</code></pre>
+
+        <h3>Requirements</h3>
+        <p>jflatdb requires <strong>Python 3.7+</strong> and has no external dependencies.</p>
+      </section>
+
+      <!-- Quick Start Section -->
+      <section id="quick-start" class="section">
+        <h2>Quick Start</h2>
+        
+        <h3>Basic Usage</h3>
+        <pre><code>from jflatdb.database import Database
+
+# Initialize database
+db = Database("users.json", password="your-password")
+
+# Insert data
+db.insert({"name": "Akki", "email": "akki@example.com", "age": 25})
+db.insert({"name": "Bob", "email": "bob@example.com", "age": 30})
+
+# Find records
+users = db.find({"name": "Akki"})
+print(users)  # [{"name": "Akki", "email": "akki@example.com", "age": 25}]
+
+# Update records
+db.update({"name": "Akki"}, {"email": "new@email.com"})
+
+# Delete records
+db.delete({"name": "Akki"})</code></pre>
+
+        <h3>Advanced Queries</h3>
+        <pre><code># Greater than / Less than
+young_users = db.find({"age": {"$gt": 18, "$lt": 30}})
+
+# IN operator
+specific_ids = db.find({"id": {"$in": [1, 2, 3]}})
+
+# LIKE for pattern matching
+names_starting_with_a = db.find({"name": {"$like": "A%"}})
+
+# BETWEEN
+ages_in_range = db.find({"age": {"$between": [20, 30]}})</code></pre>
+      </section>
+
+      <!-- Contribution Guide Section -->
+      <section id="contribution" class="section">
+        <h2>Contribution Guide</h2>
+        <p>
+          We welcome contributions from the community! Whether you're fixing bugs, adding features, 
+          improving documentation, or suggesting ideas—all contributions are valued.
+        </p>
+
+        <h3>How to Contribute</h3>
+        <ol>
+          <li><strong>Fork the repository</strong> on GitHub</li>
+          <li><strong>Clone your fork:</strong>
+            <pre><code>git clone https://github.com/YOUR_USERNAME/jflatdb.git
+cd jflatdb</code></pre>
+          </li>
+          <li><strong>Create a new branch:</strong>
+            <pre><code>git checkout -b feature/your-feature-name</code></pre>
+          </li>
+          <li><strong>Make your changes</strong> and test thoroughly</li>
+          <li><strong>Run tests:</strong>
+            <pre><code>pytest</code></pre>
+          </li>
+          <li><strong>Commit your changes:</strong>
+            <pre><code>git commit -m 'feat: add new feature'</code></pre>
+          </li>
+          <li><strong>Push to your fork:</strong>
+            <pre><code>git push origin feature/your-feature-name</code></pre>
+          </li>
+          <li><strong>Open a Pull Request</strong> with a clear description</li>
+        </ol>
+
+        <h3>Commit Message Guidelines</h3>
+        <p>We follow <strong>Conventional Commits</strong> format:</p>
+        <pre><code>feat(query): add DISTINCT function support
+fix(storage): handle empty dataset correctly
+docs: update contributing guide
+test: add tests for caching</code></pre>
+
+        <h3>Code Style</h3>
+        <ul>
+          <li>Follow <strong>PEP 8</strong> for Python code</li>
+          <li>Use type hints wherever possible</li>
+          <li>Write docstrings for classes and functions</li>
+          <li>Keep functions small and modular</li>
+          <li>Add tests for new features</li>
+        </ul>
+
+        <h3>Good First Issues</h3>
+        <p>
+          Check out issues labeled <code>good first issue</code> or <code>help wanted</code> 
+          for beginner-friendly contributions.
+        </p>
+
+        <h3>Community Guidelines</h3>
+        <ul>
+          <li>Be respectful and constructive</li>
+          <li>Follow the <a href="https://www.contributor-covenant.org/" target="_blank">Contributor Covenant</a></li>
+          <li>Comment on issues before starting work</li>
+          <li>Keep PRs focused and atomic</li>
+        </ul>
+      </section>
+
+      <!-- Contributors Section -->
+      <section id="contributors" class="section">
+        <h2>Special Thanks to Contributors</h2>
+        <p>
+          jflatdb wouldn't be possible without the amazing contributions from our community. 
+          We're grateful to everyone who has contributed code, documentation, bug reports, and ideas.
+        </p>
+
+        <div class="contributor-message">
+          <p>
+            <strong>Every contribution matters!</strong> Whether you fixed a typo, added a feature, 
+            or helped someone in discussions—thank you for making jflatdb better.
+          </p>
+        </div>
+
+        <h3>How to Become a Contributor</h3>
+        <p>
+          See our <a href="#contribution">Contribution Guide</a> above to get started. We welcome 
+          developers of all experience levels!
+        </p>
+
+        <h3>Maintainer</h3>
+        <p>
+          Developed and maintained by <strong>Akki</strong>. Special thanks to all contributors 
+          who have helped shape this project.
+        </p>
+
+        <h3>Contributors</h3>
+        <div class="contributors-grid">
+          <a href="https://github.com/jflatdb" target="_blank" class="contributor-card" title="jflatdb">
+            <img src="https://avatars.githubusercontent.com/u/218020349?s=60&v=4" alt="jflatdb">
+            <span>jflatdb</span>
+          </a>
+          <a href="https://github.com/falconcode16" target="_blank" class="contributor-card" title="falconcode16">
+            <img src="https://avatars.githubusercontent.com/u/71687498?s=60&v=4" alt="falconcode16">
+            <span>falconcode16</span>
+          </a>
+          <a href="https://github.com/codiphile" target="_blank" class="contributor-card" title="codiphile">
+            <img src="https://avatars.githubusercontent.com/u/142134117?s=60&v=4" alt="codiphile">
+            <span>codiphile</span>
+          </a>
+          <a href="https://github.com/sanketshinde3001" target="_blank" class="contributor-card" title="sanketshinde3001">
+            <img src="https://avatars.githubusercontent.com/u/126979961?s=60&v=4" alt="sanketshinde3001">
+            <span>sanketshinde3001</span>
+          </a>
+          <a href="https://github.com/prathamesh424" target="_blank" class="contributor-card" title="prathamesh424">
+            <img src="https://avatars.githubusercontent.com/u/135983263?s=60&v=4" alt="prathamesh424">
+            <span>prathamesh424</span>
+          </a>
+          <a href="https://github.com/Vaishnavi-Raykar" target="_blank" class="contributor-card" title="Vaishnavi-Raykar">
+            <img src="https://avatars.githubusercontent.com/u/126966675?s=60&v=4" alt="Vaishnavi-Raykar">
+            <span>Vaishnavi-Raykar</span>
+          </a>
+          <a href="https://github.com/wizaye" target="_blank" class="contributor-card" title="wizaye">
+            <img src="https://avatars.githubusercontent.com/u/117831928?s=60&v=4" alt="wizaye">
+            <span>wizaye</span>
+          </a>
+          <a href="https://github.com/Meghana-2124" target="_blank" class="contributor-card" title="Meghana-2124">
+            <img src="https://avatars.githubusercontent.com/u/204466699?s=60&v=4" alt="Meghana-2124">
+            <span>Meghana-2124</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- Sponsors Section -->
+      <section id="sponsors" class="section">
+        <h2>Sponsors</h2>
+        <p>
+          We're grateful for the support of our sponsors who help make jflatdb development sustainable.
+        </p>
+
+        <div class="sponsor-message">
+          <h3>Become a Sponsor</h3>
+          <p>
+            Support jflatdb development and get your name/logo featured here! Sponsorships help us:
+          </p>
+          <ul>
+            <li>Dedicate more time to development and maintenance</li>
+            <li>Improve documentation and examples</li>
+            <li>Add new features and performance improvements</li>
+            <li>Provide better community support</li>
+          </ul>
+          <p>
+            <strong>Interested in sponsoring?</strong> Please reach us.
+          </p>
+        </div>
+
+        <h3>Support the Project</h3>
+        <p>
+          If you find jflatdb useful, consider:
+        </p>
+        <ul>
+          <li>⭐ <strong>Starring</strong> the repository on GitHub</li>
+          <li>📢 <strong>Sharing</strong> it with others</li>
+          <li>🐛 <strong>Reporting bugs</strong> and suggesting features</li>
+          <li>📝 <strong>Contributing</strong> code or documentation</li>
+        </ul>
+      </section>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <p>
+          <strong>jflatdb</strong> is open source under the 
+          <a href="https://github.com/jflatdb/jflatdb/blob/main/LICENSE" target="_blank">MIT License</a>
+        </p>
+        <p>
+          <a href="https://github.com/jflatdb/jflatdb" target="_blank">GitHub</a> · 
+          <a href="https://github.com/jflatdb/jflatdb/issues" target="_blank">Issues</a> · 
+          <a href="https://github.com/jflatdb/jflatdb/discussions" target="_blank">Discussions</a>
+        </p>
+        <p class="footer-tagline">Happy coding! 🚀</p>
+      </footer>
+
     </div>
-  </div>
-  <div class="right">
-    <div class="btns">
-        <button>Contribute</button>
-        <button>Sponsors</button>
-    </div>
-  </div>
-</div>
-<!--* Header -->
-<!-- Hero -->
-<div class="hero">
-    <div class="title">🗃️ Lightweight JSON-Based Database Engine with SQL-like Features, Built in Pure Python.</div>
-</div>
-<!--* Hero -->
+  </main>
+
+  <script src="./assets/js/script.js"></script>
 </body>
 </html>
