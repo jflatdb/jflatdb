@@ -15,6 +15,16 @@ No servers, no external dependencies — just **plug-and-play storage** with ind
 [![License](https://img.shields.io/github/license/jflatdb/jflatdb)](https://github.com/jflatdb/jflatdb/blob/main/LICENSE)
 [![Hacktoberfest](https://img.shields.io/badge/Hacktoberfest-2025-blueviolet)](https://hacktoberfest.com/)
 
+---
+
+## 📑 Table of Contents
+- [Features](#-features)
+- [Installation](#-installation)
+- [Quick Start](#-quick-start)
+- [Usage Examples](#-usage-examples)
+- [Project Structure](#-project-structure)
+- [Contributing](#-contributing)
+- [License](#-license)
 
 ---
 
