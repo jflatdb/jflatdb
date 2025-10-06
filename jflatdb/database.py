@@ -14,6 +14,7 @@ from .query_cache import QueryCache
 from .transaction import Transaction
 from .schema_migration import SchemaMigration
 from .schema_version import SchemaVersion
+from .query_builder import QueryBuilder
 from .utils.logger import Logger
 
 
@@ -236,3 +237,19 @@ class Database:
     def get_migration_history(self):
         """Get full migration history"""
         return self.schema_version.get_migration_history()
+
+    # ----------- METHOD CHAINING SUPPORT ------------
+    def table(self, name="default"):
+        """
+        Create a QueryBuilder instance for method chaining.
+
+        Args:
+            name: Table name (for logging/debugging purposes)
+
+        Returns:
+            QueryBuilder: A chainable query builder instance
+
+        Example:
+            results = db.table("users").filter(age__gt=18).sort("name").limit(10).fetch()
+        """
+        return QueryBuilder(self, name)
