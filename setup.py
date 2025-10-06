@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="jflatdb",
-    version="1.0.0",
+    version="1.0.1",
     author="Akki",
     author_email="akki.jflatdb@gmail.com",
     description="A lightweight JSON-based flat file database system.",
