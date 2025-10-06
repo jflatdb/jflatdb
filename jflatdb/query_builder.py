@@ -158,10 +158,18 @@ class QueryBuilder:
         # Start with all data
         results = self._data
 
-        # Apply filters
-        for filter_query in self._filter_conditions:
-            if filter_query:
-                results = self.database.indexer.query(filter_query)
+        # Apply filters sequentially
+        if self._filter_conditions:
+            # Ensure indexer has data
+            if not hasattr(self.database.indexer, 'data') or self.database.indexer.data is None:
+                self.database.indexer.build(self._data)
+
+            # Apply each filter condition sequentially
+            for filter_query in self._filter_conditions:
+                if filter_query:
+                    # Temporarily update indexer data to current results
+                    self.database.indexer.data = results
+                    results = self.database.indexer.query(filter_query)
 
         # Apply sorting
         if self._sort_key:
@@ -198,9 +206,16 @@ class QueryBuilder:
         # Execute filters but not map
         results = self._data
 
-        for filter_query in self._filter_conditions:
-            if filter_query:
-                results = self.database.indexer.query(filter_query)
+        if self._filter_conditions:
+            # Ensure indexer has data
+            if not hasattr(self.database.indexer, 'data') or self.database.indexer.data is None:
+                self.database.indexer.build(self._data)
+
+            for filter_query in self._filter_conditions:
+                if filter_query:
+                    # Temporarily update indexer data to current results
+                    self.database.indexer.data = results
+                    results = self.database.indexer.query(filter_query)
 
         return len(results)
 
