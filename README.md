@@ -2,39 +2,60 @@
   <img src="https://github.com/jflatdb/jflatdb/raw/main/assets/logo/logo.png" width="200" alt="JFlatDB Logo" />
 </p>
 
-# jflatdb
+<h1 align="center">jflatdb</h1>
 
-🚀 **jflatdb** is a lightweight, file-based **JSON database system** designed for developers who want the simplicity of NoSQL with **query features inspired by SQL**.  
-No servers, no external dependencies — just **plug-and-play storage** with indexing, queries, and persistence.
+<p align="center">
+  <b>The next-gen lightweight JSON database for Python — fast, secure, and schema-aware.</b><br>
+  Store and query data instantly with zero setup, pure Python power, and human-readable JSON files.
+</p>
 
-![License](https://img.shields.io/github/license/jflatdb/jflatdb)
-![Contributors](https://img.shields.io/github/contributors/jflatdb/jflatdb)
-![Issues](https://img.shields.io/github/issues/jflatdb/jflatdb)
-![Stars](https://img.shields.io/github/stars/jflatdb/jflatdb)
-[![Downloads](https://img.shields.io/pypi/dm/jflatdb)](https://pypi.org/project/jflatdb/)
-[![License](https://img.shields.io/github/license/jflatdb/jflatdb)](https://github.com/jflatdb/jflatdb/blob/main/LICENSE)
-[![Hacktoberfest](https://img.shields.io/badge/Hacktoberfest-2025-blueviolet)](https://hacktoberfest.com/)
-
----
-
-## 📑 Table of Contents
-- [Features](#-features)
-- [Installation](#-installation)
-- [Quick Start](#-quick-start)
-- [Usage Examples](#-usage-examples)
-- [Project Structure](#-project-structure)
-- [Contributing](#-contributing)
-- [License](#-license)
+<p align="center">
+  <a href="https://github.com/jflatdb/jflatdb/blob/main/LICENSE"><img src="https://img.shields.io/github/license/jflatdb/jflatdb" alt="License"></a>
+  <a href="https://github.com/jflatdb/jflatdb/graphs/contributors"><img src="https://img.shields.io/github/contributors/jflatdb/jflatdb" alt="Contributors"></a>
+  <a href="https://github.com/jflatdb/jflatdb/issues"><img src="https://img.shields.io/github/issues/jflatdb/jflatdb" alt="Issues"></a>
+  <a href="https://github.com/jflatdb/jflatdb/stargazers"><img src="https://img.shields.io/github/stars/jflatdb/jflatdb" alt="Stars"></a>
+  <a href="https://pypi.org/project/jflatdb/"><img src="https://img.shields.io/pypi/dm/jflatdb" alt="Downloads"></a>
+  <a href="https://hacktoberfest.com/"><img src="https://img.shields.io/badge/Hacktoberfest-2025-blueviolet" alt="Hacktoberfest"></a>
+</p>
 
 ---
 
-## 🚀 Features
+## 📚 Table of Contents
 
-- 📦 **JSON-powered storage** – human-readable, lightweight, and portable
-- ⚡ **Fast querying with indexes** – supports filters, conditions, and sorting
-- 📑 **Built-in functions** – string, date/time, and aggregation functions
-- 🔒 **Security & validation** – encryption, constraints, and safe writes
-- 🛠 **Zero setup** – no database server needed, runs in pure Python
+* [Features](#-features)
+* [Installation](#-installation)
+* [Quick Start](#-quick-start)
+* [Usage Examples](#-usage-examples)
+* [Project Structure](#-project-structure)
+* [Contributing](#-contributing)
+* [License](#-license)
+* [Community](#-join-the-community)
+* [Credits](#-credits)
+* [Support](#-support--contributions)
+
+---
+
+## 🚀 Overview
+
+**jflatdb** is a **file-based, schema-aware JSON database system** that combines the simplicity of NoSQL with **powerful query and indexing features** inspired by SQL — all in pure Python.
+
+No servers.
+No setup.
+Just plug, code, and store.
+
+Perfect for developers, students, or small apps that need fast, secure, local data storage with minimal dependencies.
+
+---
+
+## ⚡ Features
+
+* 🧩 **Flat-File Simplicity** – Store data in plain JSON files
+* ⚙️ **Persistent Indexing** – Fast queries, no rebuild on load
+* 🔍 **Powerful Query Engine** – `$gt`, `$lt`, `$in`, `$like`, `$between`, and more
+* 🔒 **Encryption & Validation** – Optional AES encryption and schema constraints
+* 🧠 **Async & Transactions** – Atomic commits, async-safe operations
+* 🛠 **Zero Dependencies** – 100% pure Python
+* 💡 **Extensible Design** – Add plugins, custom storages, or new data types
 
 ---
 
@@ -44,106 +65,106 @@ No servers, no external dependencies — just **plug-and-play storage** with ind
 pip install jflatdb
 ```
 
-or from source 
+or install from source:
 
 ```bash
 git clone https://github.com/jflatdb/jflatdb.git
 cd jflatdb
 pip install .
-````
+```
 
-## Usage
+---
 
-```bash 
+## ⚡ Quick Start
+
+```python
 from jflatdb.database import Database
 
+# Initialize with optional encryption
 db = Database("users.json", password="your-password")
 
-# Create or insert data
-db.insert({"name": "Akki", "email": "akki@example.com"})
+# Insert data
+db.insert({"name": "Akki", "email": "akki@example.com", "age": 25})
 
-# Find records
-users = db.find({"name": "Akki"})
+# Query with conditions
+users = db.find({"age": {"$gt": 18, "$lt": 30}})
+print(users)
 
-# Advanced queries with operators
-# Greater than, less than, etc.
-young_users = db.find({"age": {"$gt": 18, "$lt": 30}})
-# IN operator
-specific_ids = db.find({"id": {"$in": [1, 2, 3]}})
-# LIKE for pattern matching
-names_starting_with_a = db.find({"name": {"$like": "A%"}})
-# BETWEEN
-ages_in_range = db.find({"age": {"$between": [20, 30]}})
-
-# Update records
+# Update and Delete
 db.update({"name": "Akki"}, {"email": "new@email.com"})
-
-# Delete records
 db.delete({"name": "Akki"})
 ```
 
+---
+
 ## 📁 Project Structure
 
-```bash 
+```bash
 jflatdb/
 ├── jflatdb/
 │   ├── __init__.py
 │   ├── database.py
 │   ├── query_engine.py
-│   └── indexing.py
-|    ├── scheme.py
-├── tests/
+│   ├── indexing.py
+│   ├── schema.py
+│   └── security.py
 ├── examples/
-├── setup.py
+├── tests/
 ├── README.md
+├── setup.py
 └── LICENSE
 ```
+
+---
 
 ## 🎉 Contributors Leaderboard
 
 <!-- readme: contributors -start -->
+
 <!-- readme: contributors -end -->
 
-
+---
 
 ## 🤝 Contributing
-We welcome contributions from the community!
 
+We welcome all contributions!
 To get started:
 
-Fork the repo
+1. **Fork** the repository
+2. Create a new branch → `git checkout -b feature-name`
+3. Commit your changes → `git commit -m "Add feature"`
+4. Push your branch → `git push origin feature-name`
+5. Open a Pull Request
 
-Create a new branch: ```git checkout -b feature-name```
-
-Make your changes and commit: ```git commit -m 'Add feature'```
-
-Push to your branch: ```git push origin feature-name```
-
-Open a Pull Request
-
-Please read our CONTRIBUTING.md for full guidelines.
-
-## 📄 License
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## 💬 Join the Community
-- [Submit an Issue](https://github.com/jflatdb/jflatdb/issues)
-
-- [Start a Discussion](https://github.com/jflatdb/jflatdb/discussion/)
-
-- [Suggest a Feature](https://github.com/jflatdb/jflatdb.github/)
+Check our [CONTRIBUTING.md](https://github.com/jflatdb/jflatdb/blob/main/CONTRIBUTING.md) for more details.
 
 ---
+
+## 📄 License
+
+This project is licensed under the **MIT License** — see the [LICENSE](https://github.com/jflatdb/jflatdb/blob/main/LICENSE) file for details.
+
+---
+
+## 💬 Join the Community
+
+* 💡 [Suggest a Feature](https://github.com/jflatdb/jflatdb/issues/new?labels=enhancement)
+* 🐞 [Report a Bug](https://github.com/jflatdb/jflatdb/issues/new?labels=bug)
+* 💬 [Start a Discussion](https://github.com/jflatdb/jflatdb/discussions)
+
+---
+
 ## 🙌 Credits
-Developed and maintained by ```Akki```.
+
+Developed and maintained by **Akki**
+Inspired by TinyDB, SQLite, and the open-source spirit.
 
 ---
 
 ## 🙏 Support & Contributions
 
-Your contributions make this project better — whether it's reporting a bug, suggesting a feature, improving the documentation, or writing code. We welcome developers of all levels to participate!
+Your support keeps this project growing! 🌱
+If you like **jflatdb**, please ⭐ **star the repo**, share it, and help more developers discover it.
 
-If you like this project, consider ⭐ starring it and sharing it with others.  
-Together, let’s build something awesome with `jflatdb`.
+> Let’s redefine simple data storage — one JSON file at a time. 💾🚀
 
-Happy coding! 🚀
