@@ -14,7 +14,9 @@
         <img src="./assets/img/logo.png" alt="jflatdb logo" class="logo">
       </a>
     </div>
-    
+    <button class="theme-toggle" aria-label="Toggle theme">🌙</button>
+
+
     <ul class="nav-links">
       <li><a href="#introduction" class="nav-link active">Introduction</a></li>
       <li><a href="#installation" class="nav-link">Installation</a></li>
@@ -35,19 +37,19 @@
   <!-- Main Content Area -->
   <main class="content">
     <div class="container">
-      
+
       <!-- Introduction Section -->
       <section id="introduction" class="section">
         <h2>Introduction</h2>
         <p>
-          <a href="https://github.com/jflatdb/jflatdb" target="_blank" class="project-link"><strong>jflatdb</strong></a> is a lightweight, Python-based flat-file database framework designed for fast, 
-          simple, and file-based data storage without the need for a server or SQL engine. It's ideal for developers 
-          building CLI tools, microservices, or offline applications that need persistent storage without the overhead 
+          <a href="https://github.com/jflatdb/jflatdb" target="_blank" class="project-link"><strong>jflatdb</strong></a> is a lightweight, Python-based flat-file database framework designed for fast,
+          simple, and file-based data storage without the need for a server or SQL engine. It's ideal for developers
+          building CLI tools, microservices, or offline applications that need persistent storage without the overhead
           of traditional database systems.
         </p>
         <p>
-          Built entirely in Python, jflatdb provides a familiar, SQL-like interface for querying JSON data stored in 
-          flat files. It offers features like indexing, caching, transactions, and schema migrations—all while maintaining 
+          Built entirely in Python, jflatdb provides a familiar, SQL-like interface for querying JSON data stored in
+          flat files. It offers features like indexing, caching, transactions, and schema migrations—all while maintaining
           simplicity and ease of use.
         </p>
       </section>
@@ -55,7 +57,7 @@
       <!-- Installation Section -->
       <section id="installation" class="section">
         <h2>Installation</h2>
-        
+
         <h3>From PyPI</h3>
         <p>Install the latest stable version using pip:</p>
         <pre><code>pip install jflatdb</code></pre>
@@ -73,7 +75,7 @@ pip install .</code></pre>
       <!-- Quick Start Section -->
       <section id="quick-start" class="section">
         <h2>Quick Start</h2>
-        
+
         <h3>Basic Usage</h3>
         <pre><code>from jflatdb.database import Database
 
@@ -112,7 +114,7 @@ ages_in_range = db.find({"age": {"$between": [20, 30]}})</code></pre>
       <section id="contribution" class="section">
         <h2>Contribution Guide</h2>
         <p>
-          We welcome contributions from the community! Whether you're fixing bugs, adding features, 
+          We welcome contributions from the community! Whether you're fixing bugs, adding features,
           improving documentation, or suggesting ideas—all contributions are valued.
         </p>
 
@@ -157,7 +159,7 @@ test: add tests for caching</code></pre>
 
         <h3>Good First Issues</h3>
         <p>
-          Check out issues labeled <code>good first issue</code> or <code>help wanted</code> 
+          Check out issues labeled <code>good first issue</code> or <code>help wanted</code>
           for beginner-friendly contributions.
         </p>
 
@@ -174,26 +176,26 @@ test: add tests for caching</code></pre>
       <section id="contributors" class="section">
         <h2>Special Thanks to Contributors</h2>
         <p>
-          jflatdb wouldn't be possible without the amazing contributions from our community. 
+          jflatdb wouldn't be possible without the amazing contributions from our community.
           We're grateful to everyone who has contributed code, documentation, bug reports, and ideas.
         </p>
 
         <div class="contributor-message">
           <p>
-            <strong>Every contribution matters!</strong> Whether you fixed a typo, added a feature, 
+            <strong>Every contribution matters!</strong> Whether you fixed a typo, added a feature,
             or helped someone in discussions—thank you for making jflatdb better.
           </p>
         </div>
 
         <h3>How to Become a Contributor</h3>
         <p>
-          See our <a href="#contribution">Contribution Guide</a> above to get started. We welcome 
+          See our <a href="#contribution">Contribution Guide</a> above to get started. We welcome
           developers of all experience levels!
         </p>
 
         <h3>Maintainer</h3>
         <p>
-          Developed and maintained by <strong>Akki</strong>. Special thanks to all contributors 
+          Developed and maintained by <strong>Akki</strong>. Special thanks to all contributors
           who have helped shape this project.
         </p>
 
@@ -272,12 +274,12 @@ test: add tests for caching</code></pre>
       <!-- Footer -->
       <footer class="footer">
         <p>
-          <strong>jflatdb</strong> is open source under the 
+          <strong>jflatdb</strong> is open source under the
           <a href="https://github.com/jflatdb/jflatdb/blob/main/LICENSE" target="_blank">MIT License</a>
         </p>
         <p>
-          <a href="https://github.com/jflatdb/jflatdb" target="_blank">GitHub</a> · 
-          <a href="https://github.com/jflatdb/jflatdb/issues" target="_blank">Issues</a> · 
+          <a href="https://github.com/jflatdb/jflatdb" target="_blank">GitHub</a> ·
+          <a href="https://github.com/jflatdb/jflatdb/issues" target="_blank">Issues</a> ·
           <a href="https://github.com/jflatdb/jflatdb/discussions" target="_blank">Discussions</a>
         </p>
         <p class="footer-tagline">Happy coding! 🚀</p>
