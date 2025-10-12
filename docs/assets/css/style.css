@@ -1,7 +1,7 @@
 /*
  * jflatdb Documentation Styles
  * Minimal Confluence-like Wiki Layout
- * 
+ *
  * Color Palette:
  * - Background: #ffffff (white)
  * - Sidebar: #f8f9fa (light gray)
@@ -9,6 +9,153 @@
  * - Text: #1f2937 (dark gray)
  * - Border: #e5e7eb (light gray border)
  */
+
+ /* ===== Dark Mode ===== */
+body.dark-mode {
+  background-color: #1f2937; /* Dark background */
+  color: #f9fafb; /* Light text */
+}
+
+body.dark-mode .sidebar {
+  background-color: #111827; /* Dark sidebar */
+  border-right: 1px solid #374151;
+}
+
+body.dark-mode .nav-link {
+  color: #d1d5db;
+}
+
+body.dark-mode .nav-link:hover {
+  background-color: #374151;
+  color: #f9fafb;
+}
+
+body.dark-mode .nav-link.active {
+  background-color: #2563eb;
+  color: #ffffff;
+  border-right: 3px solid #2563eb;
+}
+
+body.dark-mode a {
+  color: #60a5fa;
+}
+
+body.dark-mode a:hover {
+  color: #93c5fd;
+}
+
+body.dark-mode pre {
+  background-color: #111827;
+  border: 1px solid #374151;
+}
+
+body.dark-mode pre code {
+  color: #f9fafb;
+}
+
+body.dark-mode code {
+  background-color: #374151;
+  color: #fef3c7; /* golden-ish for code */
+}
+
+body.dark-mode .contributor-message,
+body.dark-mode .sponsor-message {
+  background-color: #1e293b;
+  border-left: 4px solid #2563eb;
+  color: #f9fafb;
+}
+
+body.dark-mode .contributor-card {
+  background-color: #111827;
+  border-color: #374151;
+  color: #f9fafb;
+}
+
+body.dark-mode .footer {
+  color: #9ca3af;
+}
+
+body.dark-mode .footer a {
+  color: #9ca3af;
+}
+
+/* Headers */
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode h6 {
+  color: #f9fafb; /* light color for all headers */
+}
+
+/* Paragraphs and normal text */
+body.dark-mode p,
+body.dark-mode li,
+body.dark-mode span,
+body.dark-mode strong,
+body.dark-mode em {
+  color: #e5e7eb; /* slightly lighter gray for better readability */
+}
+
+/* Links */
+body.dark-mode a {
+  color: #60a5fa; /* lighter blue for links */
+}
+
+body.dark-mode a:hover {
+  color: #93c5fd;
+}
+
+/* Code inline blocks */
+body.dark-mode code {
+  background-color: #374151; /* dark background for inline code */
+  color: #fef3c7; /* golden-ish color for inline code */
+}
+
+
+/* Preformatted code blocks in dark mode */
+body.dark-mode pre {
+  background-color: #1e293b; /* dark slate background */
+  border: 1px solid #374151; /* slightly lighter border */
+  color: #f9fafb; /* fallback text color */
+}
+
+/* Inline code in dark mode */
+body.dark-mode code {
+  background-color: #374151; /* darker background for inline code */
+  color: #fef3c7; /* golden-ish text for readability */
+}
+
+/* Pre code inside pre blocks */
+body.dark-mode pre code {
+  background-color: transparent; /* inherit pre background */
+  color: #f9fafb; /* light text for code */
+}
+
+/* ==== THEME ICON COLOR TOGGLE ==== */
+
+.theme-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #374151; /* dark gray for light mode */
+  transition: color 0.3s, transform 0.3s;
+  z-index: 9999;
+}
+
+.theme-toggle:hover {
+  transform: rotate(15deg);
+}
+
+/* Dark mode icon color */
+body.dark-mode .theme-toggle {
+  color: #f9fafb; /* light gray */
+}
 
 /* ===== Global Reset & Base Styles ===== */
 * {
@@ -339,11 +486,11 @@ pre code {
   .content {
     margin-left: 240px;
   }
-  
+
   .sidebar {
     width: 240px;
   }
-  
+
   .container {
     padding: 0 24px;
   }
@@ -355,45 +502,45 @@ pre code {
   .sidebar-toggle {
     display: flex;
   }
-  
+
   /* Hide sidebar by default on mobile */
   .sidebar {
     transform: translateX(-100%);
   }
-  
+
   /* Show sidebar when active */
   .sidebar.active {
     transform: translateX(0);
   }
-  
+
   /* Full width content on mobile */
   .content {
     margin-left: 0;
   }
-  
+
   .container {
     padding: 0 16px;
     padding-top: 60px; /* Space for toggle button */
   }
-  
+
   /* Adjust typography for mobile */
   h2 {
     font-size: 28px;
   }
-  
+
   h3 {
     font-size: 20px;
   }
-  
+
   pre {
     padding: 12px;
     font-size: 12px;
   }
-  
+
   pre code {
     font-size: 12px;
   }
-  
+
   /* Contributors grid responsive */
   .contributors-grid {
     grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
@@ -407,15 +554,15 @@ pre code {
     padding: 0 12px;
     padding-top: 60px;
   }
-  
+
   h2 {
     font-size: 24px;
   }
-  
+
   h3 {
     font-size: 18px;
   }
-  
+
   .section {
     margin-bottom: 48px;
   }
