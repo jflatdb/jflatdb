@@ -141,7 +141,8 @@ Check our [CONTRIBUTING.md](https://github.com/jflatdb/jflatdb/blob/main/CONTRIB
 ---
 
 ### 📈 Repo Activity
-![JFlatDB Repo Activity](https://repobeats.axiom.co/api/embed/1017142525.svg)
+
+![JFlatDB Repo Activity](https://repobeats.axiom.co/api/embed/218020349.svg "Repobeats analytics image")
 
 ---
 
