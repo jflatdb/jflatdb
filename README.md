@@ -140,6 +140,11 @@ Check our [CONTRIBUTING.md](https://github.com/jflatdb/jflatdb/blob/main/CONTRIB
 
 ---
 
+### 📈 Repo Activity
+![JFlatDB Repo Activity](https://repobeats.axiom.co/api/embed/1017142525.svg)
+
+---
+
 ## 📄 License
 
 This project is licensed under the **MIT License** — see the [LICENSE](https://github.com/jflatdb/jflatdb/blob/main/LICENSE) file for details.
