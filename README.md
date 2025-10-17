@@ -10,12 +10,12 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/jflatdb/jflatdb/blob/main/LICENSE"><img src="https://img.shields.io/github/license/jflatdb/jflatdb" alt="License"></a>
+ <a width="200px" href="https://github.com/jflatdb/jflatdb/blob/main/LICENSE"><img src="https://img.shields.io/github/license/jflatdb/jflatdb" alt="License"></a>
   <a href="https://github.com/jflatdb/jflatdb/graphs/contributors"><img src="https://img.shields.io/github/contributors/jflatdb/jflatdb" alt="Contributors"></a>
   <a href="https://github.com/jflatdb/jflatdb/issues"><img src="https://img.shields.io/github/issues/jflatdb/jflatdb" alt="Issues"></a>
   <a href="https://github.com/jflatdb/jflatdb/stargazers"><img src="https://img.shields.io/github/stars/jflatdb/jflatdb" alt="Stars"></a>
   <a href="https://pypi.org/project/jflatdb/"><img src="https://img.shields.io/pypi/dm/jflatdb" alt="Downloads"></a>
-  <a href="https://hacktoberfest.com/"><img src="https://img.shields.io/badge/Hacktoberfest-2025-blueviolet" alt="Hacktoberfest"></a>
+  <a href="https://hacktoberfest.com/"><img src="https://img.shields.io/badge/Hacktoberfest-2025-blueviolet" alt="Hacktoberfest"></a> 
 </p>
 
 ---
@@ -142,6 +142,13 @@ Check our [CONTRIBUTING.md](https://github.com/jflatdb/jflatdb/blob/main/CONTRIB
 
 ### 📈 Repo Activity
 ![JFlatDB Repo Activity](https://repobeats.axiom.co/api/embed/1017142525.svg)
+
+---
+
+## We couldn't have done this without you.
+<a href="https://github.com/jflatdb/jflatdb/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=jflatdb/jflatdb" />
+</a>
 
 ---
 
