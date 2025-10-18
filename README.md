@@ -105,11 +105,20 @@ db.delete({"name": "Akki"})
 ```bash
 jflatdb/
 ├── jflatdb/
+│   ├── utils/
+│   ├── exceptions/
 │   ├── __init__.py
+│   ├── cli.py
 │   ├── database.py
+│   ├── indexer.py
+│   ├── query_builder.py
+│   ├── query_cache.py
 │   ├── query_engine.py
-│   ├── indexing.py
 │   ├── schema.py
+│   ├── schema_migration.py
+│   ├── schema_version.py
+│   ├── storage.py
+│   ├── transation.py
 │   └── security.py
 ├── examples/
 ├── tests/
