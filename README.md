@@ -49,13 +49,16 @@ Perfect for developers, students, or small apps that need fast, secure, local da
 
 ## ⚡ Features
 
-* 🧩 **Flat-File Simplicity** – Store data in plain JSON files
-* ⚙️ **Persistent Indexing** – Fast queries, no rebuild on load
-* 🔍 **Powerful Query Engine** – `$gt`, `$lt`, `$in`, `$like`, `$between`, and more
-* 🔒 **Encryption & Validation** – Optional AES encryption and schema constraints
-* 🧠 **Async & Transactions** – Atomic commits, async-safe operations
-* 🛠 **Zero Dependencies** – 100% pure Python
-* 💡 **Extensible Design** – Add plugins, custom storages, or new data types
+| Feature                    | Description                                     | Demo                                                                                                                                 |
+| -------------------------- | ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| 🧩 **Flat-File Simplicity**    | Store data in plain JSON files                  | <img src="https://media.giphy.com/media/f9vE0YZ2i4QYQ/giphy.gif" width="100" alt="Flat JSON Files" title="Flat JSON Storage">        |
+| ⚙️ **Persistent Indexing**     | Fast queries, no rebuild on load                | <img src="https://media.giphy.com/media/3o6ZtpxSZbQRRnwCKQ/giphy.gif" width="100" alt="Fast Indexing" title="Persistent Indexing">   |
+| 🔍 **Powerful Query Engine**   | `$gt`, `$lt`, `$in`, `$like`, `$between`        | <img src="https://media.giphy.com/media/5xaOcLT9SoXAhG/giphy.gif" width="100" alt="Query Engine Demo" title="Powerful Queries">      |
+| 🔒 **Encryption & Validation** | Optional AES encryption & schema constraints    | <img src="https://media.giphy.com/media/26FPCXdkvDbKBbgOI/giphy.gif" width="100" alt="Encryption Demo" title="Secure Data">          |
+| 🧠 **Async & Transactions**    | Atomic commits, async-safe operations           | <img src="https://media.giphy.com/media/xT9IglJZz1bU6RFBiM/giphy.gif" width="100" alt="Transactions Demo" title="Safe Transactions"> |
+| 🛠 **Zero Dependencies**       | 100% pure Python                                | <img src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif" width="100" alt="Zero Dependencies" title="Pure Python">        |
+| 💡 **Extensible Design**       | Add plugins, custom storages, or new data types | <img src="https://media.giphy.com/media/xT9IgzoKnwFNmISR8I/giphy.gif" width="100" alt="Extensible Demo" title="Extendable Design">   |
+
 
 ---
 
